@@ -10,4 +10,5 @@ public class Utils {
 		DisplayMetrics metrics = c.getResources().getDisplayMetrics();
 		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
 	}
+
 }
