@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TagView.iml" filepath="$PROJECT_DIR$/TagView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tagViewDemoApp/tagViewDemoApp.iml" filepath="$PROJECT_DIR$/tagViewDemoApp/tagViewDemoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tagviewlib/tagviewlib.iml" filepath="$PROJECT_DIR$/tagviewlib/tagviewlib.iml" />
     </modules>
   </component>
 </project>
