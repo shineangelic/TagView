@@ -24,7 +24,7 @@
         android:visibility="visible"
         android:layout_below="@+id/editText">
 
-        <Tag.TagView
+        <it.angelic.tagviewlib.TagRelativeLayout
             android:animateLayoutChanges="true"
             android:id="@+id/tag_group"
             android:layout_width="match_parent"

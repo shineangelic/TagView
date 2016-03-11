@@ -1,4 +1,4 @@
-package Tag;
+package it.angelic.tagviewlib;
 
 import android.graphics.Color;
 

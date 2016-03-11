@@ -1,4 +1,4 @@
-package Tag;
+package it.angelic.tagviewlib;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,10 +19,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.angelic.tagviewlib.R;
 
-
-public class TagView extends RelativeLayout {
+public class TagRelativeLayout extends RelativeLayout {
 
     /**
      * custom layout param
@@ -36,7 +34,7 @@ public class TagView extends RelativeLayout {
     /**
      * tag list
      */
-    private List<Tag> mTags = new ArrayList<Tag>();
+    private List<TagView> mTags = new ArrayList<TagView>();
     /**
      * System Service
      */
@@ -62,7 +60,7 @@ public class TagView extends RelativeLayout {
      *
      * @param ctx
      */
-    public TagView(Context ctx) {
+    public TagRelativeLayout(Context ctx) {
         super(ctx, null);
         initialize(ctx, null, 0);
     }
@@ -73,7 +71,7 @@ public class TagView extends RelativeLayout {
      * @param ctx
      * @param attrs
      */
-    public TagView(Context ctx, AttributeSet attrs) {
+    public TagRelativeLayout(Context ctx, AttributeSet attrs) {
         super(ctx, attrs);
         initialize(ctx, attrs, 0);
     }
@@ -85,7 +83,7 @@ public class TagView extends RelativeLayout {
      * @param attrs
      * @param defStyle
      */
-    public TagView(Context ctx, AttributeSet attrs, int defStyle) {
+    public TagRelativeLayout(Context ctx, AttributeSet attrs, int defStyle) {
         super(ctx, attrs, defStyle);
         initialize(ctx, attrs, defStyle);
     }
@@ -112,13 +110,13 @@ public class TagView extends RelativeLayout {
 
 
         // get AttributeSet
-        TypedArray typeArray = ctx.obtainStyledAttributes(attrs, R.styleable.TagView, defStyle, defStyle);
-        this.lineMargin = (int) typeArray.getDimension(R.styleable.TagView_lineMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_LINE_MARGIN));
-        this.tagMargin = (int) typeArray.getDimension(R.styleable.TagView_tagMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_MARGIN));
-        this.textPaddingLeft = (int) typeArray.getDimension(R.styleable.TagView_textPaddingLeft, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_LEFT));
-        this.textPaddingRight = (int) typeArray.getDimension(R.styleable.TagView_textPaddingRight, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_RIGHT));
-        this.textPaddingTop = (int) typeArray.getDimension(R.styleable.TagView_textPaddingTop, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_TOP));
-        this.texPaddingBottom = (int) typeArray.getDimension(R.styleable.TagView_textPaddingBottom, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_BOTTOM));
+        TypedArray typeArray = ctx.obtainStyledAttributes(attrs, R.styleable.TagRelativeLayout, defStyle, defStyle);
+        this.lineMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_lineMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_LINE_MARGIN));
+        this.tagMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_tagMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_MARGIN));
+        this.textPaddingLeft = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingLeft, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_LEFT));
+        this.textPaddingRight = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingRight, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_RIGHT));
+        this.textPaddingTop = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingTop, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_TOP));
+        this.texPaddingBottom = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingBottom, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_BOTTOM));
         typeArray.recycle();
     }
 
@@ -168,25 +166,27 @@ public class TagView extends RelativeLayout {
         int listIndex = 1;// List Index
         int index_bottom = 1;// The Tag to add below
         int index_header = 1;// The header tag of this line
-        Tag tag_pre = null;
-        for (Tag item : mTags) {
+        TagView tag_pre = null;
+        for (TagView item : mTags) {
             final int position = listIndex - 1;
-            final Tag tag = item;
+            final TagView tag = item;
 
             // inflate tag layout
-            View tagLayout = (View) mInflater.inflate(R.layout.tagview_item, null);
-            tagLayout.setId(listIndex);
+            TagView tagLayout = (TagView) mInflater.inflate(R.layout.tagview_item, null);
+            tagLayout.setTagId(listIndex);
             tagLayout.setBackgroundDrawable(getSelector(tag));
 
             // tag text
-            TextView tagView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_contain);
-            tagView.setText(tag.text);
-            //tagView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tagView.getLayoutParams();
+            TextView tagTextView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_contain);
+            tagTextView.setText(tag.getText());
+
+            tagTextView.setTextColor(tag.getTagTextColor());
+            //tagTextView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tagTextView.getLayoutParams();
             params.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
-            tagView.setLayoutParams(params);
-            tagView.setTextColor(tag.tagTextColor);
-            tagView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.tagTextSize);
+            tagTextView.setLayoutParams(params);
+
+            tagTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getTagTextSize());
             tagLayout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -197,32 +197,32 @@ public class TagView extends RelativeLayout {
             });
 
             // calculate　of tag layout width
-            float tagWidth = tagView.getPaint().measureText(tag.text) + textPaddingLeft + textPaddingRight;
-            // tagView padding (left & right)
+            float tagWidth = tagTextView.getPaint().measureText(tag.getText()) + textPaddingLeft + textPaddingRight;
+            // tagTextView padding (left & right)
 
             // deletable text
             TextView deletableView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_delete);
-            if (tag.isDeletable) {
+            if (tag.isDeletable()) {
                 deletableView.setVisibility(View.VISIBLE);
-                deletableView.setText(tag.deleteIcon);
+                deletableView.setText(tag.getDeleteIcon());
                 int offset = Utils.dipToPx(getContext(), 2f);
                 deletableView.setPadding(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
                 /*params = (LinearLayout.LayoutParams) deletableView.getLayoutParams();
 				params.setMargins(offset, textPaddingTop, textPaddingRight+offset, texPaddingBottom);
 				deletableView.setLayoutParams(params);*/
-                deletableView.setTextColor(tag.deleteIndicatorColor);
-                deletableView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.deleteIndicatorSize);
+                deletableView.setTextColor(tag.getDeleteIconColor());
+                deletableView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getDeleteIconSize());
                 deletableView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //TagView.this.remove(position);
                         if (mDeleteListener != null) {
-                            Tag targetTag = tag;
-                            mDeleteListener.onTagDeleted(TagView.this, targetTag, position);
+                            TagView targetTag = tag;
+                            mDeleteListener.onTagDeleted(TagRelativeLayout.this, targetTag, position);
                         }
                     }
                 });
-                tagWidth += deletableView.getPaint().measureText(tag.deleteIcon) + textPaddingLeft + textPaddingRight;
+                tagWidth += deletableView.getPaint().measureText(tag.getDeleteIcon()) + textPaddingLeft + textPaddingRight;
                 // deletableView Padding (left & right)
             } else {
                 deletableView.setVisibility(View.GONE);
@@ -249,7 +249,7 @@ public class TagView extends RelativeLayout {
                     tagParams.addRule(RelativeLayout.RIGHT_OF, listIndex - 1);
                     tagParams.leftMargin = tagMargin;
                     total += tagMargin;
-                    if (tag_pre != null && tag_pre.tagTextSize < tag.tagTextSize) {
+                    if (tag_pre != null && tag_pre.getTagTextSize() < tag.getTagTextSize()) {
                         index_bottom = listIndex;
                     }
                 }
@@ -265,18 +265,18 @@ public class TagView extends RelativeLayout {
 
     }
 
-    private Drawable getSelector(Tag tag) {
-        if (tag.background != null) return tag.background;
+    private Drawable getSelector(TagView tag) {
+        if (tag.getBackground() != null) return tag.getBackground();
         StateListDrawable states = new StateListDrawable();
         GradientDrawable gd_normal = new GradientDrawable();
-        gd_normal.setColor(tag.layoutColor);
-        gd_normal.setCornerRadius(tag.radius);
-        if (tag.layoutBorderSize > 0) {
-            gd_normal.setStroke(Utils.dipToPx(getContext(), tag.layoutBorderSize), tag.layoutBorderColor);
+        gd_normal.setColor(tag.getLayoutColor());
+        gd_normal.setCornerRadius(tag.getRadius());
+        if (tag.getLayoutBorderSize() > 0) {
+            gd_normal.setStroke(Utils.dipToPx(getContext(), tag.getLayoutBorderSize()), tag.getLayoutBorderColor());
         }
         GradientDrawable gd_press = new GradientDrawable();
-        gd_press.setColor(tag.layoutColorPress);
-        gd_press.setCornerRadius(tag.radius);
+        gd_press.setColor(tag.getLayoutColorPressed());
+        gd_press.setCornerRadius(tag.getRadius());
         states.addState(new int[]{android.R.attr.state_pressed}, gd_press);
         //must add state_pressed first，or state_pressed will not take effect
         states.addState(new int[]{}, gd_normal);
@@ -290,28 +290,27 @@ public class TagView extends RelativeLayout {
     /**
      * @param tag
      */
-    public void addTag(Tag tag) {
+    public void addTag(TagView tag) {
 
         mTags.add(tag);
         drawTags();
     }
 
-    public void addTags(ArrayList<Tag> tags) {
+    public void addTags(ArrayList<TagView> tags) {
         if (tags == null) return;
         mTags = new ArrayList<>();
         if (tags.size() == 0)
             drawTags();
-        for (Tag item : tags) {
+        for (TagView item : tags) {
             addTag(item);
         }
     }
 
 
-    public void addTags(String[] tags) {
+    public void addTags(TagView[] tags) {
         if (tags == null) return;
-        for (String item : tags) {
-            Tag tag = new Tag(item);
-            addTag(tag);
+        for (TagView item : tags) {
+            addTag(item);
         }
     }
 	/*public void addTags(ArrayList<String> tags){
@@ -327,7 +326,7 @@ public class TagView extends RelativeLayout {
      *
      * @return mTags TagObject List
      */
-    public List<Tag> getTags() {
+    public List<TagView> getTags() {
         return mTags;
     }
 
@@ -348,6 +347,7 @@ public class TagView extends RelativeLayout {
      */
     public void removeAll() {
         removeAllViews();
+        mTags.clear();
     }
 
     public int getLineMargin() {

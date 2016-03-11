@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="TagView">
+    <declare-styleable name="TagRelativeLayout">
         <attr name="lineMargin" format="dimension" />
         <attr name="tagMargin" format="dimension" />
         <attr name="textPaddingLeft" format="dimension" />

@@ -16,20 +16,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import Tag.Constants;
-import Tag.OnTagClickListener;
-import Tag.OnTagDeleteListener;
-import Tag.Tag;
-import Tag.TagView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cuneyt.example.model.TagClass;
+import it.angelic.tagviewlib.Constants;
+import it.angelic.tagviewlib.OnTagClickListener;
+import it.angelic.tagviewlib.OnTagDeleteListener;
+import it.angelic.tagviewlib.TagRelativeLayout;
+import it.angelic.tagviewlib.TagView;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.tag_group)
-    TagView tagGroup;
+    TagRelativeLayout tagGroup;
 
     @InjectView(R.id.editText)
     EditText editText;
@@ -68,24 +68,25 @@ public class MainActivity extends AppCompatActivity {
 
         tagGroup.setOnTagClickListener(new OnTagClickListener() {
             @Override
-            public void onTagClick(Tag tag, int position) {
-                editText.setText(tag.text);
-                editText.setSelection(tag.text.length());//to set cursor position
-
+            public void onTagClick(TagView tag, int position) {
+                editText.setText(tag.getText());
+                editText.setSelection(tag.getText().length());//to set cursor position
             }
         });
+
+
         tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
 
             @Override
-            public void onTagDeleted(final TagView view, final Tag tag, final int position) {
+            public void onTagDeleted(final TagRelativeLayout view, final TagView tag, final int position) {
 
                 final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
-                dialog.setMessage("\"" + tag.text + "\" will be deleted. Are you sure?");
+                dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");
                 dialog.setPositiveButton("Yes", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         view.remove(position);
-                        Toast.makeText(MainActivity.this, "\"" + tag.text + "\" deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "\"" + tag.getText() + "\" deleted", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 temp = jsonArray.getJSONObject(i);
                 tagList.add(new TagClass(temp.getString("code"), temp.getString("name")));
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTags(CharSequence cs) {
         String text = cs.toString();
-        ArrayList<Tag> tags = new ArrayList<>();
-        Tag tag;
+        ArrayList<TagView> tags = new ArrayList<>();
+        TagView tag;
         /**
          * counter for prevent frozen effect
          * if the tags number is greather than 20 some device will a bit frozen
@@ -134,17 +134,17 @@ public class MainActivity extends AppCompatActivity {
          * for empty edittext
          */
         if (text.equals("")) {
-            tagGroup.addTags(new ArrayList<Tag>());
+            tagGroup.addTags(new ArrayList<TagView>());
             return;
         }
 
         for (int i = 0; i < tagList.size(); i++) {
             if (tagList.get(i).getName().toLowerCase().startsWith(text.toLowerCase())) {
-                tag = new Tag(tagList.get(i).getName());
-                tag.radius = 10f;
-                tag.layoutColor = (Color.parseColor(tagList.get(i).getColor()));
+                tag = new TagView(getApplicationContext(),tagList.get(i).getName());
+                tag.setRadius(10f);
+                tag.setLayoutColor (Color.parseColor(tagList.get(i).getColor()));
                 if (i % 2 == 0) // you can set deletable or not
-                    tag.isDeletable = true;
+                    tag.setDeletable(true);
                 tags.add(tag);
                 counter++;
                 /**

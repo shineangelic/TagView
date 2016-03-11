@@ -1,4 +1,4 @@
-package com.nianticproject.www.tagviewlib;
+package it.angelic.tagviewlib;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
