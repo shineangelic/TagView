@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -154,6 +155,7 @@ public class TagRelativeLayout extends RelativeLayout {
     private void drawTags() {
 
         if (!mInitialized) {
+            Log.e("TagView TEST", "INIT MISS");
             return;
         }
 
@@ -167,27 +169,33 @@ public class TagRelativeLayout extends RelativeLayout {
         int index_bottom = 1;// The Tag to add below
         int index_header = 1;// The header tag of this line
         TagView tag_pre = null;
+        Log.d("TagView TEST", "Drawing Tags: "+mTags.size());
         for (TagView item : mTags) {
             final int position = listIndex - 1;
             final TagView tag = item;
 
             // inflate tag layout
-            TagView tagLayout = (TagView) mInflater.inflate(R.layout.tagview_item, null);
+            TagView tagLayout = (TagView) mInflater.inflate(R.layout.tagview_item, tag);
+            //TagView tagLayout = tag;
             tagLayout.setTagId(listIndex);
             tagLayout.setBackgroundDrawable(getSelector(tag));
 
+            //tagLayout.sett
             // tag text
             TextView tagTextView = (TextView) tagLayout.findViewById(R.id.tv_tag_item_contain);
             tagTextView.setText(tag.getText());
 
             tagTextView.setTextColor(tag.getTagTextColor());
-            //tagTextView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tagTextView.getLayoutParams();
-            params.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
-            tagTextView.setLayoutParams(params);
+            tagTextView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
+           // ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) tagTextView.getLayoutParams();
+            TagView.LayoutParams tagParams = new TagView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            //TODO on child
+            tagParams.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
+            tagTextView.setLayoutParams(tagParams);
 
             tagTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getTagTextSize());
-            tagLayout.setOnClickListener(new OnClickListener() {
+
+           tagLayout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mClickListener != null) {
@@ -228,8 +236,8 @@ public class TagRelativeLayout extends RelativeLayout {
                 deletableView.setVisibility(View.GONE);
             }
 
-            LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            //tagParams.setMargins(0, 0, 0, 0);
+          //  LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tagParams.setMargins(0, 0, 0, 0);
 
             //add margin of each line
             tagParams.bottomMargin = lineMargin;
@@ -253,8 +261,6 @@ public class TagRelativeLayout extends RelativeLayout {
                         index_bottom = listIndex;
                     }
                 }
-
-
             }
             total += tagWidth;
             addView(tagLayout, tagParams);

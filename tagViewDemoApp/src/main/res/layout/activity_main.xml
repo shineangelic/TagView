@@ -24,12 +24,32 @@
         android:visibility="visible"
         android:layout_below="@+id/editText">
 
-        <it.angelic.tagviewlib.TagRelativeLayout
-            android:animateLayoutChanges="true"
-            android:id="@+id/tag_group"
+        <RelativeLayout
+            android:id="@+id/test_laoyut"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp" />
+            android:layout_height="wrap_content">
+
+            <it.angelic.tagviewlib.TagView
+                android:id="@+id/test_raff"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </it.angelic.tagviewlib.TagView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="si si tesss"/>
+
+            <it.angelic.tagviewlib.TagRelativeLayout
+                android:animateLayoutChanges="true"
+                android:id="@+id/tag_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp" />
+        </RelativeLayout>
+
 
     </ScrollView>
 

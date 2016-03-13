@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -34,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.editText)
     EditText editText;
 
+    @InjectView(R.id.test_laoyut)
+    RelativeLayout testRel;
 
+    @InjectView(R.id.test_raff)
+    TagView testRalf;
     /**
      * sample country list
      */
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("TagView TEST", "onTextChanged: " + s);
                 setTags(s);
             }
 
@@ -65,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //TagView testt = new TagView(getApplicationContext(),"barapappa");
+       // testRel.addView(testRalf);
 
         tagGroup.setOnTagClickListener(new OnTagClickListener() {
             @Override
@@ -138,14 +147,16 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        Log.d("TagView TEST","setTags size: "+tagList.size());
         for (int i = 0; i < tagList.size(); i++) {
             if (tagList.get(i).getName().toLowerCase().startsWith(text.toLowerCase())) {
                 tag = new TagView(getApplicationContext(),tagList.get(i).getName());
                 tag.setRadius(10f);
-                tag.setLayoutColor (Color.parseColor(tagList.get(i).getColor()));
+                tag.setLayoutColor(Color.parseColor(tagList.get(i).getColor()));
                 if (i % 2 == 0) // you can set deletable or not
                     tag.setDeletable(true);
                 tags.add(tag);
+                Log.d("TagView TEST", "match found: " + tag);
                 counter++;
                 /**
                  * if you don't want show all tags. You can set a limit.
