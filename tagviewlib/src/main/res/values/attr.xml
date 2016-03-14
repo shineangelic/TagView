@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Options">
+        <attr name="titleTextT" format="string" localization="suggested" />
+        <attr name="valueColorT" format="color" />
+    </declare-styleable>
+    <declare-styleable name="SimpleTagView">
+        <attr name="titleText" format="string" localization="suggested" />
+        <attr name="valueColor" format="color" />
+        <attr name="valueRadius" format="integer" />
+        <attr name="valueDeletable" format="boolean" />
+    </declare-styleable>
+</resources>

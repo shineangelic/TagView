@@ -242,7 +242,7 @@ public class TagRelativeLayout extends RelativeLayout {
             //add margin of each line
             tagParams.bottomMargin = lineMargin;
 
-            if (mWidth <= total + tagWidth + Utils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
+            /*if (mWidth <= total + tagWidth + Utils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
                 //need to add in new line
                 tagParams.addRule(RelativeLayout.BELOW, index_bottom);
                 // initialize total param (layout padding left & layout padding right)
@@ -261,7 +261,7 @@ public class TagRelativeLayout extends RelativeLayout {
                         index_bottom = listIndex;
                     }
                 }
-            }
+            }*/
             total += tagWidth;
             addView(tagLayout, tagParams);
             tag_pre = tag;

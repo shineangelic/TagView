@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -21,9 +21,11 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cuneyt.example.model.TagClass;
+import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.Constants;
-import it.angelic.tagviewlib.OnTagClickListener;
+import it.angelic.tagviewlib.OnSimpleTagClickListener;
 import it.angelic.tagviewlib.OnTagDeleteListener;
+import it.angelic.tagviewlib.SimpleTag;
 import it.angelic.tagviewlib.TagRelativeLayout;
 import it.angelic.tagviewlib.TagView;
 import me.drakeet.materialdialog.MaterialDialog;
@@ -37,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
 
     @InjectView(R.id.test_laoyut)
-    RelativeLayout testRel;
+    LinearLayout testRel;
 
-    @InjectView(R.id.test_raff)
-    TagView testRalf;
+    @InjectView(R.id.nuovoTag)
+    SimpleTagView testRaff;
+
     /**
      * sample country list
      */
@@ -74,13 +77,15 @@ public class MainActivity extends AppCompatActivity {
         });
         //TagView testt = new TagView(getApplicationContext(),"barapappa");
        // testRel.addView(testRalf);
+        testRaff.setText("PEROROVOVOFK");
 
-        tagGroup.setOnTagClickListener(new OnTagClickListener() {
+        testRaff.setOnTagClickListener(new OnSimpleTagClickListener() {
             @Override
-            public void onTagClick(TagView tag, int position) {
-                editText.setText(tag.getText());
-                editText.setSelection(tag.getText().length());//to set cursor position
+            public void onTagClick(SimpleTag tag) {
+                Log.d("TagView TEST","TAG click: "+tag.getName()
+                );
             }
+
         });
 
 

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<it.angelic.tagviewlib.TagView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    >
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <TextView
         android:id="@+id/tv_tag_item_contain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:text="TIRULICCHIO"
         android:gravity="center"
         android:ellipsize="end"
         android:singleLine="true" />
@@ -22,4 +19,4 @@
         android:singleLine="true"
         android:visibility="gone"/>
 
-</it.angelic.tagviewlib.TagView>
+</merge>

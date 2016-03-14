@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tagview="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -24,18 +25,22 @@
         android:visibility="visible"
         android:layout_below="@+id/editText">
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/test_laoyut"
-            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <it.angelic.tagviewlib.TagView
-                android:id="@+id/test_raff"
+            <it.angelic.tagviewlib.SimpleTagView
+                android:id="@+id/nuovoTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tagview:titleText="Background color"
+                tagview:valueColor="@android:color/holo_green_light"
+                tagview:valueDeletable="true"
+                tagview:valueRadius="14"
+                />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </it.angelic.tagviewlib.TagView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,10 +50,10 @@
             <it.angelic.tagviewlib.TagRelativeLayout
                 android:animateLayoutChanges="true"
                 android:id="@+id/tag_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp" />
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </ScrollView>
