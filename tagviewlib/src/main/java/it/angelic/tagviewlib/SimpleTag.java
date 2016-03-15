@@ -3,7 +3,12 @@ package it.angelic.tagviewlib;
 /**
  * Created by shine@angelic.it on 14/03/2016.
  */
-public class SimpleTag {
+class SimpleTag {
+    private boolean isVisible;
+    private String name;
+    private int color;
+    private int radius;
+
     public boolean isVisible() {
         return isVisible;
     }
@@ -20,9 +25,6 @@ public class SimpleTag {
         this.name = name;
     }
 
-    private boolean isVisible;
-    private String name;
-
     public int getColor() {
         return color;
     }
@@ -31,8 +33,6 @@ public class SimpleTag {
         this.color = color;
     }
 
-    private int color;
-
     public int getRadius() {
         return radius;
     }
@@ -40,6 +40,4 @@ public class SimpleTag {
     public void setRadius(int radius) {
         this.radius = radius;
     }
-
-    private int radius;
 }

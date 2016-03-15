@@ -6,8 +6,8 @@
     </declare-styleable>
     <declare-styleable name="SimpleTagView">
         <attr name="titleText" format="string" localization="suggested" />
-        <attr name="valueColor" format="color" />
-        <attr name="valueRadius" format="integer" />
-        <attr name="valueDeletable" format="boolean" />
+        <attr name="tagColor" format="color" />
+        <attr name="tagRadius" format="integer" />
+        <attr name="isDeletable" format="boolean" />
     </declare-styleable>
 </resources>

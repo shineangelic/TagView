@@ -21,11 +21,13 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cuneyt.example.model.TagClass;
+import it.angelic.tagviewlib.OnSimpleTagDeleteListener;
+import it.angelic.tagviewlib.SimpleTagRelativeLayout;
 import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.Constants;
 import it.angelic.tagviewlib.OnSimpleTagClickListener;
 import it.angelic.tagviewlib.OnTagDeleteListener;
-import it.angelic.tagviewlib.SimpleTag;
+import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.TagRelativeLayout;
 import it.angelic.tagviewlib.TagView;
 import me.drakeet.materialdialog.MaterialDialog;
@@ -33,7 +35,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.tag_group)
-    TagRelativeLayout tagGroup;
+    SimpleTagRelativeLayout tagGroup;
 
     @InjectView(R.id.editText)
     EditText editText;
@@ -77,22 +79,29 @@ public class MainActivity extends AppCompatActivity {
         });
         //TagView testt = new TagView(getApplicationContext(),"barapappa");
        // testRel.addView(testRalf);
-        testRaff.setText("PEROROVOVOFK");
+        testRaff.setText("PERO");
+
+
+        SimpleTagView tagTer = new SimpleTagView(getBaseContext());
+        tagTer.setText("ter");
+        testRel.addView(tagTer);
 
         testRaff.setOnTagClickListener(new OnSimpleTagClickListener() {
             @Override
-            public void onTagClick(SimpleTag tag) {
-                Log.d("TagView TEST","TAG click: "+tag.getName()
+            public void onTagClick(SimpleTagView tag) {
+                Log.d("TagView TEST","TAG click: "+tag.getText()
                 );
             }
 
         });
 
 
-        tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
+        tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
 
             @Override
-            public void onTagDeleted(final TagRelativeLayout view, final TagView tag, final int position) {
+            public void onTagDeleted(final SimpleTagRelativeLayout view,final SimpleTagView tag,final int position) {
+
+
 
                 final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
                 dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");
@@ -112,7 +121,11 @@ public class MainActivity extends AppCompatActivity {
                 });
                 dialog.show();
 
+
             }
+
+
+
         });
 
 
@@ -136,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTags(CharSequence cs) {
         String text = cs.toString();
-        ArrayList<TagView> tags = new ArrayList<>();
-        TagView tag;
+        ArrayList<SimpleTagView> tags = new ArrayList<>();
+        SimpleTagView tag;
         /**
          * counter for prevent frozen effect
          * if the tags number is greather than 20 some device will a bit frozen
@@ -148,16 +161,16 @@ public class MainActivity extends AppCompatActivity {
          * for empty edittext
          */
         if (text.equals("")) {
-            tagGroup.addTags(new ArrayList<TagView>());
+            tagGroup.addTags(new ArrayList<SimpleTagView>());
             return;
         }
 
         Log.d("TagView TEST","setTags size: "+tagList.size());
         for (int i = 0; i < tagList.size(); i++) {
             if (tagList.get(i).getName().toLowerCase().startsWith(text.toLowerCase())) {
-                tag = new TagView(getApplicationContext(),tagList.get(i).getName());
-                tag.setRadius(10f);
-                tag.setLayoutColor(Color.parseColor(tagList.get(i).getColor()));
+                tag = new SimpleTagView(getApplicationContext(),tagList.get(i).getName());
+                tag.setRadius(8);
+                tag.setColor(Color.parseColor(tagList.get(i).getColor()));
                 if (i % 2 == 0) // you can set deletable or not
                     tag.setDeletable(true);
                 tags.add(tag);

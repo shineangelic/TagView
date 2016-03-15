@@ -36,10 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tagview:titleText="Background color"
-                tagview:valueColor="@android:color/holo_green_light"
-                tagview:valueDeletable="true"
-                tagview:valueRadius="14"
-                />
+                tagview:isDeletable="true"
+                tagview:tagColor="@android:color/holo_green_light"
+                tagview:tagRadius="14" />
 
 
             <TextView
@@ -47,11 +46,11 @@
                 android:layout_height="wrap_content"
                 android:text="si si tesss"/>
 
-            <it.angelic.tagviewlib.TagRelativeLayout
-                android:animateLayoutChanges="true"
+            <it.angelic.tagviewlib.SimpleTagRelativeLayout
                 android:id="@+id/tag_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_margin="10dp" />
         </LinearLayout>
 
