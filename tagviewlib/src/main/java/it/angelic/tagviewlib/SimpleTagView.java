@@ -11,10 +11,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SimpleTagView extends LinearLayout {
@@ -81,12 +79,11 @@ public class SimpleTagView extends LinearLayout {
         setRadius(content.getRadius());
 
 
-
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mClickListener != null) {
-                    mClickListener.onTagClick(SimpleTagView.this);
+                    mClickListener.onSimpleTagClick(SimpleTagView.this);
                 }
             }
         });
@@ -173,7 +170,7 @@ public class SimpleTagView extends LinearLayout {
      *
      * @param clickListener
      */
-    public void setOnTagClickListener(OnSimpleTagClickListener clickListener) {
+    public void setOnSimpleTagClickListener(OnSimpleTagClickListener clickListener) {
         mClickListener = clickListener;
     }
 } 

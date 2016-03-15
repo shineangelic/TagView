@@ -26,10 +26,6 @@ import it.angelic.tagviewlib.SimpleTagRelativeLayout;
 import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.Constants;
 import it.angelic.tagviewlib.OnSimpleTagClickListener;
-import it.angelic.tagviewlib.OnTagDeleteListener;
-import it.angelic.tagviewlib.SimpleTagView;
-import it.angelic.tagviewlib.TagRelativeLayout;
-import it.angelic.tagviewlib.TagView;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -97,22 +93,27 @@ public class MainActivity extends AppCompatActivity {
         testRel.addView(tagTer2);
         testRel.addView(tagTer3);
 
-        testRaff.setOnTagClickListener(new OnSimpleTagClickListener() {
+        testRaff.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
             @Override
-            public void onTagClick(SimpleTagView tag) {
-                Log.d("TagView TEST","TAG click: "+tag.getText()
+            public void onSimpleTagClick(SimpleTagView tag) {
+                Log.d("TagView TEST", "TAG click: " + tag.getText()
                 );
+            }
+        });
+
+        tagGroup.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
+            @Override
+            public void onSimpleTagClick(SimpleTagView tag) {
+                Log.d("TagView TEST", "TAG click: " + tag.getText() );
+                editText.setText(tag.getText());
             }
 
         });
-
 
         tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
 
             @Override
             public void onTagDeleted(final SimpleTagRelativeLayout view,final SimpleTagView tag,final int position) {
-
-
 
                 final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
                 dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");

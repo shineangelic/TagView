@@ -191,15 +191,17 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             //tagTextView.setLayoutParams(tagParams);
 
             // tagTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getTagTextSize());
-            item.setOnTagClickListener(new OnSimpleTagClickListener() {
+            item.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
                 @Override
-                public void onTagClick(SimpleTagView tag) {
+                public void onSimpleTagClick(SimpleTagView tag) {
                     if (mClickListener != null) {
-                        mClickListener.onTagClick(tag);
+                        mClickListener.onSimpleTagClick(tag);
                     }
                 }
 
             });
+
+
             int sss = (int) tagTextView.getPaint().measureText(item.getText());
             // int sss = (int) tagTextView.getPaint().gett
             item.measure(sss,40);
@@ -209,15 +211,15 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             Log.d("TagView TEST", "re-adding "+item.getText()+": tagWidth=" + tagWidth+" mHeight=" + item.getMeasuredHeight());
             // deletable text
             TextView deletableView = (TextView) item.findViewById(R.id.isDeletable);
-           /* if (item.isDeletable()) {
+            if (item.isDeletable()) {
                 // deletableView.setVisibility(View.VISIBLE);
                 //deletableView.setText(tag.getDeleteIcon());
-                int offset = Utils.dipToPx(getContext(), 2f);
-                deletableView.setPadding(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) deletableView.getLayoutParams();
-                params.setMargins(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
-                deletableView.setLayoutParams(params);
-                deletableView.setTextColor(item.getColor());
+              //  int offset = Utils.dipToPx(getContext(), 2f);
+               // deletableView.setPadding(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
+               // LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) deletableView.getLayoutParams();
+               // params.setMargins(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
+                //deletableView.setLayoutParams(params);
+               // deletableView.setTextColor(item.getColor());
                 //deletableView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getDeleteIconSize());
                 deletableView.setOnClickListener(new OnClickListener() {
                     @Override
@@ -233,12 +235,12 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
                 // deletableView Padding (left & right)
             } else {
                 deletableView.setVisibility(View.GONE);
-            }*/
+            }
 
             LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             //RelativeLayout.LayoutParams tagParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             //TODO on child
-            tagParams.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
+           // tagParams.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
             // LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tagParams.setMargins(0, 0, 0, 0);
 
