@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
         testRaff.setText("PERO");
 
         //Tag examples
-        SimpleTagView tagTer = new SimpleTagView(getBaseContext());
+        SimpleTagView tagTer = new SimpleTagView(getApplicationContext());
         tagTer.setText("Programmatic");
 
-        SimpleTagView tagTer2 = new SimpleTagView(getBaseContext());
+        SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
         tagTer2.setText("Programmatic Deletable");
         tagTer2.setDeletable(true);
 
-        SimpleTagView tagTer3 = new SimpleTagView(getBaseContext());
+        SimpleTagView tagTer3 = new SimpleTagView(getApplicationContext());
         tagTer3.setText("Programmatic Red");
         tagTer3.setColor(Color.argb(255, 255, 0, 0));
 

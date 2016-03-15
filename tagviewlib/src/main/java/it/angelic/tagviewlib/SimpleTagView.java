@@ -18,6 +18,9 @@ import android.widget.TextView;
 public class SimpleTagView extends LinearLayout {
 
     private final View tagRootView;
+    private final int backgroundDefaultColor;
+    private final int textDefaultColor;
+    private final int textDefaultColorInverse;
     private TextView tagTextView;
     private TextView tagDeleteTextView;
     private SimpleTag content;
@@ -36,12 +39,14 @@ public class SimpleTagView extends LinearLayout {
         super(context, attrs);
         content = new SimpleTag();
 
-        TypedArray arrayTheme = context.getTheme().obtainStyledAttributes(new int[] {
+        TypedArray arrayTheme = context.getTheme().obtainStyledAttributes(new int[]{
                 android.R.attr.colorBackground,
+                android.R.attr.textColorPrimary,
                 android.R.attr.textColorPrimaryInverse,
         });
-        int backgroundDefaultColor = arrayTheme.getColor(0, 0xFF00FF);
-        int textDefaultColor = arrayTheme.getColor(1, 0xFF00FF);
+        backgroundDefaultColor = arrayTheme.getColor(0, 0xFF00FF);
+        textDefaultColor = arrayTheme.getColor(1, Color.GRAY);
+        textDefaultColorInverse = arrayTheme.getColor(2, Color.LTGRAY);
         arrayTheme.recycle();
 
         TypedArray a = context.obtainStyledAttributes(attrs,
@@ -70,13 +75,13 @@ public class SimpleTagView extends LinearLayout {
         tagTextView =(TextView)getChildAt(0);
         tagTextView.setText(titleText);
 
-
         //tagTextView.setTextColor(textDefaultColor);
         tagDeleteTextView = (TextView) getChildAt(1);
         tagDeleteTextView.setVisibility(valueDelete ? View.VISIBLE : View.GONE);
 
         //richiama selector + color
         setRadius(content.getRadius());
+        resetTextColor();
 
 
         setOnClickListener(new OnClickListener() {
@@ -87,6 +92,25 @@ public class SimpleTagView extends LinearLayout {
                 }
             }
         });
+    }
+
+    private void resetTextColor() {
+        //compute text color
+        int computed;
+        if (getColorLuminosity(content.getColor()) > 186f ) {
+            Log.d("TagView TEST", "BRIG selected for: " + Integer.toHexString(content.getColor()));
+            computed = textDefaultColorInverse;
+        }else { //use #ffffff
+            Log.d("TagView TEST", "DARK selected for: " + Integer.toHexString(content.getColor()));
+            computed = textDefaultColor;
+
+        }
+        tagDeleteTextView.setTextColor(computed);
+        tagTextView.setTextColor(computed);
+    }
+
+    private double getColorLuminosity(int col) {
+        return Color.red(col)*0.299 + Color.green(col)*0.587 + Color.blue(col)*0.114;
     }
 
     @Override
@@ -132,6 +156,7 @@ public class SimpleTagView extends LinearLayout {
     }
 
     public int getColor() {
+        resetTextColor();
         return content.getColor();
     }
 

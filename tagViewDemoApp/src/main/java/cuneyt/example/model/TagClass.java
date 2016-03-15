@@ -26,16 +26,16 @@ public class TagClass {
 
     public String getRandomColor() {
         ArrayList<String> colors = new ArrayList<>();
-        colors.add("#ED7D31");
-        colors.add("#00B0F0");
-        colors.add("#FF0000");
+       /* colors.add("#ED7D99");
+        colors.add("#00B0F0");*/
+        colors.add("#FF00FF");
         colors.add("#D0CECE");
-        colors.add("#00B050");
+       /* colors.add("#00B050");
         colors.add("#9999FF");
         colors.add("#FF5FC6");
-        colors.add("#FFC000");
+        colors.add("#FFC0FF");
         colors.add("#7F7F7F");
-        colors.add("#4800FF");
+        colors.add("#48DDFF");*/
 
         return colors.get(new Random().nextInt(colors.size()));
     }

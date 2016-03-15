@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -135,7 +134,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int size = 0;
         mWidth = getMeasuredWidth();
-        mHeight= getMeasuredHeight();
+        mHeight = getMeasuredHeight();
         mWidth = getMeasuredWidth();
     }
 
@@ -160,30 +159,31 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         // layout padding left & layout padding right
         float total = getPaddingLeft() + getPaddingRight();
 
-        int listIndex = 1;// List Index
+        int listIndex = 0;// List Index
         int index_bottom = 1;// The Tag to add below
         int index_header = 1;// The header tag of this line
         try {
-              index_bottom = mTags.get(0).getId();// The Tag to add below
-              index_header = mTags.get(0).getId();// The header tag of this line
-        }catch(Exception e){
+            index_bottom = mTags.get(0).getId();// The Tag to add below
+            index_header = mTags.get(0).getId();// The header tag of this line
+        } catch (Exception e) {
             Log.w("", "Empty list");
         }
 
         SimpleTagView tag_pre = null;
         Log.d("TagView TEST", "Drawing Tags: " + mTags.size());
         for (final SimpleTagView item : mTags) {
-            final int position = listIndex - 1;
+            final int position = listIndex;
             // inflate tag layout
             //TagView tagLayout = tag;
             //  tagLayout.setTagId(listIndex);
             // tagLayout.setBackgroundDrawable(getSelector(tag));
-            Log.d("TagView TEST", "re-adding: " + item.getText()+ " id: "+item.getId());
+
             //tagLayout.sett
             // tag text
             TextView tagTextView = (TextView) item.findViewById(R.id.tagName);
             item.setText(item.getText());
-            item.setId(position);
+            item.setId(position+1);
+            Log.d("TagView TEST", "re-adding: " + item.getText() + " id: " + item.getId());
             //tagTextView.setTextColor(tag.getTagTextColor());
             //  tagTextView.setPadding(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
             // ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) tagTextView.getLayoutParams();
@@ -204,22 +204,22 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
 
             int sss = (int) tagTextView.getPaint().measureText(item.getText());
             // int sss = (int) tagTextView.getPaint().gett
-            item.measure(sss,40);
+            item.measure(sss, 40);
             // calculate　of tag layout width
             float tagWidth = item.getMeasuredWidth() + textPaddingLeft + textPaddingRight;
             // tagTextView padding (left & right)
-            Log.d("TagView TEST", "re-adding "+item.getText()+": tagWidth=" + tagWidth+" mHeight=" + item.getMeasuredHeight());
+            Log.d("TagView TEST", "re-adding " + item.getText() + ": tagWidth=" + tagWidth + " mHeight=" + item.getMeasuredHeight());
             // deletable text
             TextView deletableView = (TextView) item.findViewById(R.id.isDeletable);
             if (item.isDeletable()) {
                 // deletableView.setVisibility(View.VISIBLE);
                 //deletableView.setText(tag.getDeleteIcon());
-              //  int offset = Utils.dipToPx(getContext(), 2f);
-               // deletableView.setPadding(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
-               // LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) deletableView.getLayoutParams();
-               // params.setMargins(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
+                //  int offset = Utils.dipToPx(getContext(), 2f);
+                // deletableView.setPadding(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
+                // LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) deletableView.getLayoutParams();
+                // params.setMargins(offset, textPaddingTop, textPaddingRight + offset, texPaddingBottom);
                 //deletableView.setLayoutParams(params);
-               // deletableView.setTextColor(item.getColor());
+                // deletableView.setTextColor(item.getColor());
                 //deletableView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getDeleteIconSize());
                 deletableView.setOnClickListener(new OnClickListener() {
                     @Override
@@ -240,13 +240,13 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             //RelativeLayout.LayoutParams tagParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             //TODO on child
-           // tagParams.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
+            // tagParams.setMargins(textPaddingLeft, textPaddingTop, textPaddingRight, texPaddingBottom);
             // LayoutParams tagParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             tagParams.setMargins(0, 0, 0, 0);
 
             //add margin of each line
             tagParams.bottomMargin = lineMargin;
-            Log.d("TagView TEST", "adding. mWidth:" + mWidth+" total:" + total);
+            Log.d("TagView TEST", "adding. mWidth:" + mWidth + " total:" + total);
             if (mWidth <= total + tagWidth + Utils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
                 //need to add in new line
                 Log.d("TagView TEST", "new line.BELOW index_bottom:" + index_bottom);
@@ -257,7 +257,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
                 index_header = item.getId();
             } else {
                 //no need to new line
-                Log.d("TagView TEST", "NO new line. index_header:" + index_header+" me:"+item.getId());
+                Log.d("TagView TEST", "NO new line. index_header:" + index_header + " me:" + item.getId());
                 tagParams.addRule(RelativeLayout.ALIGN_TOP, index_header);
                 //not header of the line
                 if (tag_pre != null && item.getId() != index_header) {
@@ -308,7 +308,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         }
     }
     /*public void addTags(ArrayList<String> tags){
-		if (tags==null)return;
+        if (tags==null)return;
 		for(String item:tags){
 			Tag tag = new Tag(item);
 			addTag(tag);

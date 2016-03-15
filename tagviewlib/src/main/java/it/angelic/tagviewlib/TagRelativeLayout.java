@@ -44,8 +44,6 @@ public class TagRelativeLayout extends RelativeLayout {
     /**
      * listener
      */
-    private OnTagClickListener mClickListener;
-    private OnTagDeleteListener mDeleteListener;
     /**
      * view size param
      */
@@ -195,14 +193,7 @@ public class TagRelativeLayout extends RelativeLayout {
 
             tagTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, tag.getTagTextSize());
 
-           tagLayout.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mClickListener != null) {
-                        mClickListener.onTagClick(tag, position);
-                    }
-                }
-            });
+
 
             // calculate　of tag layout width
             float tagWidth = tagTextView.getPaint().measureText(tag.getText()) + textPaddingLeft + textPaddingRight;
@@ -223,11 +214,7 @@ public class TagRelativeLayout extends RelativeLayout {
                 deletableView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //TagView.this.remove(position);
-                        if (mDeleteListener != null) {
-                            TagView targetTag = tag;
-                            mDeleteListener.onTagDeleted(TagRelativeLayout.this, targetTag, position);
-                        }
+                        //removed
                     }
                 });
                 tagWidth += deletableView.getPaint().measureText(tag.getDeleteIcon()) + textPaddingLeft + textPaddingRight;
@@ -404,22 +391,5 @@ public class TagRelativeLayout extends RelativeLayout {
         this.texPaddingBottom = Utils.dipToPx(getContext(), texPaddingBottom);
     }
 
-    /**
-     * setter for OnTagSelectListener
-     *
-     * @param clickListener
-     */
-    public void setOnTagClickListener(OnTagClickListener clickListener) {
-        mClickListener = clickListener;
-    }
-
-    /**
-     * setter for OnTagDeleteListener
-     *
-     * @param deleteListener
-     */
-    public void setOnTagDeleteListener(OnTagDeleteListener deleteListener) {
-        mDeleteListener = deleteListener;
-    }
 
 }

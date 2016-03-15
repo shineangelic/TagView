@@ -44,18 +44,10 @@
                 tagview:tagRadius="14" />
 
             <View android:id="@+id/separator"
-                android:background="#ffffff"
+                android:background="#CCCCCC"
                 android:layout_width = "fill_parent"
-                android:layout_height="1dip"
-                android:layout_centerVertical ="true"
-                android:layout_alignParentTop="true"/>
-            <ImageView
-                android:id="@+id/widget39"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/separator"
-                android:layout_alignParentRight="true"
-                />
+                android:layout_height="1dip" />
+
 
             <it.angelic.tagviewlib.SimpleTagRelativeLayout
                 android:id="@+id/tag_group"
