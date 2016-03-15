@@ -18,6 +18,7 @@ import android.widget.TextView;
 /**
  * Created by shine@angelic.it on 11/03/2016.
  */
+@Deprecated
 public class TagView extends LinearLayout {
 
 

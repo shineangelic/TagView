@@ -4,17 +4,17 @@ package it.angelic.tagviewlib;
  * Created by shine@angelic.it on 14/03/2016.
  */
 class SimpleTag {
-    private boolean isVisible;
+    private boolean isDeletable;
     private String name;
     private int color;
     private int radius;
 
-    public boolean isVisible() {
-        return isVisible;
+    public boolean isDeletable() {
+        return isDeletable;
     }
 
-    public void setIsVisible(boolean isVisible) {
-        this.isVisible = isVisible;
+    public void setDeletable(boolean isVisible) {
+        this.isDeletable = isVisible;
     }
 
     public String getName() {

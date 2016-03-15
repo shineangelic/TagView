@@ -11,12 +11,15 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SimpleTagView extends LinearLayout {
 
+    private final View tagRootView;
     private TextView tagTextView;
     private TextView tagDeleteTextView;
     private SimpleTag content;
@@ -25,7 +28,6 @@ public class SimpleTagView extends LinearLayout {
     public SimpleTagView(Context context) {
         this(context, (AttributeSet) null);
     }
-
 
     public SimpleTagView(Context context, String tagName) {
         this(context, (AttributeSet) null);
@@ -56,25 +58,29 @@ public class SimpleTagView extends LinearLayout {
         content.setColor(valueColor);
         content.setName(titleText);
         content.setRadius(valueRadius);
-        content.setIsVisible(valueDelete);
+        content.setDeletable(valueDelete);
         a.recycle();
 
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
 
+        //INFLATION
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View tutto = inflater.inflate(R.layout.view_color_option, this, true);
+        tagRootView = inflater.inflate(R.layout.view_color_option, this, true);
 
-        tagTextView = (TextView) getChildAt(0);
+        tagTextView =(TextView)getChildAt(0);
         tagTextView.setText(titleText);
-        tagTextView.setTextColor(textDefaultColor);
 
 
+        //tagTextView.setTextColor(textDefaultColor);
         tagDeleteTextView = (TextView) getChildAt(1);
         tagDeleteTextView.setVisibility(valueDelete ? View.VISIBLE : View.GONE);
 
-        tutto.setBackgroundDrawable(getSelector(content));
+        //richiama selector + color
+        setRadius(content.getRadius());
+
+
 
         setOnClickListener(new OnClickListener() {
             @Override
@@ -89,9 +95,9 @@ public class SimpleTagView extends LinearLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
       //  Log.d("---", content.getName());
-        //int tagWidth = (int) tagTextView.getPaint().measureText(content.getName());
+        int tagWidth = (int) tagTextView.getPaint().measureText(content.getName());
         //Log.d("tagWidth", Integer.toString(getWidth()));
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(tagWidth, heightMeasureSpec);
        /* Log.d("widthMeasureSpec", Integer.toString(MeasureSpec.getSize(widthMeasureSpec)));
         Log.d("heightMeasureSpec", Integer.toString(MeasureSpec.getSize(heightMeasureSpec)));
         Log.d("viewWidth", Integer.toString(getMeasuredWidth()));
@@ -116,6 +122,7 @@ public class SimpleTagView extends LinearLayout {
     public void setText(String tee) {
         content.setName(tee);
         tagTextView.setText(tee);
+        invalidate();
     }
 
     public int getRadius() {
@@ -124,6 +131,7 @@ public class SimpleTagView extends LinearLayout {
 
     public void setRadius(int tee) {
         content.setRadius(tee);
+        tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
     public int getColor() {
@@ -132,29 +140,29 @@ public class SimpleTagView extends LinearLayout {
 
     public void setColor(int tee) {
         content.setColor(tee);
+        tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
     public boolean isDeletable() {
-        return content.isVisible();
+        return content.isDeletable();
     }
 
     public void setDeletable(boolean isVisible) {
-        content.setIsVisible(isVisible);
+        content.setDeletable(isVisible);
+        tagDeleteTextView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
-
     private Drawable getSelector(SimpleTag tag) {
         // if (tag.getBackground() != null) return tag.getBackground();
         StateListDrawable states = new StateListDrawable();
         GradientDrawable gd_normal = new GradientDrawable();
         gd_normal.setColor(getColor());
         gd_normal.setCornerRadius(getRadius());
-        //if (tag.getLayoutBorderSize() > 0) {
-        //  gd_normal.setStroke(Utils.dipToPx(getContext(), tag.getLayoutBorderSize()), tag.getLayoutBorderColor());
-        //}
-    /*GradientDrawable gd_press = new GradientDrawable();
-    gd_press.setColor(tag.getLayoutColorPressed());
-    gd_press.setCornerRadius(tag.getRadius());
-    states.addState(new int[]{android.R.attr.state_pressed}, gd_press);*/
+
+        gd_normal.setStroke(Utils.dipToPx(getContext(), 2f), Color.TRANSPARENT);
+        /*GradientDrawable gd_press = new GradientDrawable();
+        gd_press.setColor(tag.getLayoutColorPressed());
+        gd_press.setCornerRadius(tag.getRadius());
+        states.addState(new int[]{android.R.attr.state_pressed}, gd_press);*/
         //must add state_pressed first，or state_pressed will not take effect
         states.addState(new int[]{}, gd_normal);
         return states;

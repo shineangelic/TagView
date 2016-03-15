@@ -81,10 +81,21 @@ public class MainActivity extends AppCompatActivity {
        // testRel.addView(testRalf);
         testRaff.setText("PERO");
 
-
+        //Tag examples
         SimpleTagView tagTer = new SimpleTagView(getBaseContext());
-        tagTer.setText("ter");
+        tagTer.setText("Programmatic");
+
+        SimpleTagView tagTer2 = new SimpleTagView(getBaseContext());
+        tagTer2.setText("Programmatic Deletable");
+        tagTer2.setDeletable(true);
+
+        SimpleTagView tagTer3 = new SimpleTagView(getBaseContext());
+        tagTer3.setText("Programmatic Red");
+        tagTer3.setColor(Color.argb(255, 255, 0, 0));
+
         testRel.addView(tagTer);
+        testRel.addView(tagTer2);
+        testRel.addView(tagTer3);
 
         testRaff.setOnTagClickListener(new OnSimpleTagClickListener() {
             @Override
