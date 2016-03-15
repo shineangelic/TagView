@@ -1,18 +1,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     xmlns:tagview="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    tools:context=".MainActivity">
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignRight="@+id/tags_laoyut"
         android:layout_alignEnd="@+id/tags_laoyut"
         android:layout_alignLeft="@+id/tags_laoyut"
+        android:layout_alignRight="@+id/tags_laoyut"
         android:layout_alignStart="@+id/tags_laoyut"
         android:hint="Type the name of your Country" />
 
@@ -20,44 +23,80 @@
         android:id="@+id/tags_laoyut"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/editText"
         android:layout_marginLeft="6dp"
         android:background="@android:color/white"
-        android:visibility="visible"
-        android:layout_below="@+id/editText">
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/test_laoyut"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/separator"
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="example of xml added SimpleTagView"/>
-            <it.angelic.tagviewlib.SimpleTagView
-                android:id="@+id/nuovoTag"
+                android:text="example of xml added SimpleTagView:" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tagview:titleText="Background color"
-                tagview:isDeletable="true"
-                tagview:tagColor="@android:color/holo_green_light"
-                tagview:tagRadius="14" />
+                android:orientation="horizontal">
 
-            <View android:id="@+id/separator"
-                android:background="#CCCCCC"
-                android:layout_width = "fill_parent"
-                android:layout_height="1dip" />
+                <it.angelic.tagviewlib.SimpleTagView
+                    android:id="@+id/nuovoTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tagview:tagColor="@android:color/holo_green_light"
+                    tagview:tagRadius="8"
+                    tagview:titleText="Background color" />
 
+                <it.angelic.tagviewlib.SimpleTagView
+                    android:id="@+id/nuovoTag2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tagview:tagColor="@android:color/holo_blue_dark"
+                    tagview:tagRadius="8"
+                    tagview:titleText="holo blue dark" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator2"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example of SimpleTagRelativeLayout:" />
 
             <it.angelic.tagviewlib.SimpleTagRelativeLayout
                 android:id="@+id/tag_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp" />
+
+            <View
+                android:id="@+id/separator3"
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="example of programatically added SimpleTagView"/>
+                android:text="example of programatically added SimpleTagView:" />
         </LinearLayout>
 
 

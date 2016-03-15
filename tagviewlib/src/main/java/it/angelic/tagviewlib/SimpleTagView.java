@@ -97,11 +97,11 @@ public class SimpleTagView extends LinearLayout {
     private void resetTextColor() {
         //compute text color
         int computed;
-        if (getColorLuminosity(content.getColor()) > 186f ) {
-            Log.d("TagView TEST", "BRIG selected for: " + Integer.toHexString(content.getColor()));
+        if (getColorLuminosity(content.getColor()) > 100f ) {
+            Log.d("TagView TEST", "BRIG selected for: " + Integer.toHexString(content.getColor()) + " -"+Integer.toHexString(textDefaultColorInverse));
             computed = textDefaultColorInverse;
         }else { //use #ffffff
-            Log.d("TagView TEST", "DARK selected for: " + Integer.toHexString(content.getColor()));
+            Log.d("TagView TEST", "DARK selected for: " + Integer.toHexString(content.getColor())+ " -"+Integer.toHexString(textDefaultColor));
             computed = textDefaultColor;
 
         }
