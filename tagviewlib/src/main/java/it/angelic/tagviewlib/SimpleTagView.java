@@ -132,25 +132,52 @@ public class SimpleTagView extends LinearLayout {
         this.startAnimation(anim);
     }
 */
+    /**
+     * Get main TextView's text
+     *
+     * @see TextView#getText()
+     */
     public String getText() {
         return content.getName();
     }
 
-    public void setText(String tee) {
-        content.setName(tee);
+    /**
+     * Set main TextView's text
+     * @param tee
+     *
+     * @see TextView#setText(CharSequence)
+     */
+    public void setText(CharSequence tee) {
+        content.setName(tee.toString());
         tagTextView.setText(tee);
         invalidate();
     }
 
+    /**
+     * {@link GradientDrawable }
+     * @return tag background corner radius in pixels
+     */
     public int getRadius() {
         return content.getRadius();
     }
 
+    /**
+     * set corner radius by GradientDrawable.setCornerRadius
+     * @param tee
+     *
+     * @see GradientDrawable#setCornerRadius(float)
+     *
+     */
     public void setRadius(int tee) {
         content.setRadius(tee);
         tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
+    /**
+     * Text color will be determined automatically based on
+     * threshold value {@link Constants}
+     * @return
+     */
     public int getColor() {
         return content.getColor();
     }
@@ -161,6 +188,10 @@ public class SimpleTagView extends LinearLayout {
         tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
+    /**
+     * Deletable tags automatically adds the symbol '×', but you still need to attach a listener to make it work
+     * @return whether TAG is deletable or not
+     */
     public boolean isDeletable() {
         return content.isDeletable();
     }
