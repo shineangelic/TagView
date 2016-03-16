@@ -16,7 +16,7 @@ buildscript {
 ext {
     PUBLISH_GROUP_ID = 'it.angelic'
     PUBLISH_ARTIFACT_ID = 'tagView'
-    PUBLISH_VERSION = '1.0.0'
+    PUBLISH_VERSION = '1.0.1'
 }
 
 allprojects {
