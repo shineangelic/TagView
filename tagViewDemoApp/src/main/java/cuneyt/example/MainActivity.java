@@ -73,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //TagView testt = new TagView(getApplicationContext(),"barapappa");
-       // testRel.addView(testRalf);
-        testRaff.setText("PERO");
 
         //Tag examples
         SimpleTagView tagTer = new SimpleTagView(getApplicationContext());

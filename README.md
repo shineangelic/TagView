@@ -1,5 +1,9 @@
-#Android TagView
-Android TagView-HashTagView
+# Android SimpleTagView
+Android TagView-HashTagView derived from Cüneyt Çarıkçi
+
+I tried to hide internal implementation and expose tagView APIs only,
+not forcing the user to pass thru RelativeLayout view. SimpleTagView
+is just this humble.
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TagView-green.svg?style=flat)](https://android-arsenal.com/details/1/2566)
 
@@ -7,14 +11,10 @@ Simple android view to display collection of colorful tags efficiently.
 You can edit the tag's style, and set listener of selecting or deleting tag. 
 Example usages can be found in example project.
 
-#Screen
-<img src="http://s11.postimg.org/rry7lw877/Screenshot_2015_09_29_21_17_53.png"></img>
-<img src="http://i.giphy.com/3oEduFls2tAwrOALzG.gif"></img>
-
 
 #Feature
-* Editable Style of Text, such as Font size and color.
-* Editable Style of Tag, Background/Pressed Color, Radius effect, Custom Background, Delete mode.
+* SimpleTagView extends GroupView, it represents a single TAG.
+* SimpleTagRelativeLayout is a group of TAGs, allowing add, removal and listeners.
 * Listener of tag selecting and deleting.
 * Can be created from XML file or Java code.
 
@@ -34,8 +34,6 @@ Example usages can be found in example project.
  tagGroup.addTags(ArrayList<Tag> tags);
  //Via string array
  addTags(String[] tags);
- 
-  
    //set click listener
       tagGroup.setOnTagClickListener(new OnTagClickListener() {
             @Override
@@ -51,15 +49,12 @@ Example usages can be found in example project.
         });  
 </pre>
 
-#Sample APK
-https://www.dropbox.com/s/m1y1npssj5b4bck/app-debug.apk?dl=0
-
 #Libraries Used
 <a href="http://jakewharton.github.io/butterknife/">ButterKnife by Jake Wharton</a></br>
 <a href="https://github.com/drakeet/MaterialDialog">MaterialDialog by drakeet</a>
 
 #License
-Copyright 2015 Cüneyt Çarıkçi.
+Copyright 2016 shine@angelic.it
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

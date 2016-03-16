@@ -35,6 +35,24 @@
             android:orientation="vertical">
 
             <View
+                android:id="@+id/separator2"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="example of SimpleTagRelativeLayout:" />
+
+            <it.angelic.tagviewlib.SimpleTagRelativeLayout
+                android:id="@+id/tag_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+            <View
                 android:id="@+id/separator"
                 android:layout_marginTop="20dp"
                 android:layout_width="fill_parent"
@@ -56,35 +74,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:tagColor="@android:color/holo_green_light"
-                    tagview:tagRadius="8"
-                    tagview:titleText="Background color" />
+                    tagview:titleText="XML TAG" />
 
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:tagColor="@android:color/holo_blue_dark"
-                    tagview:tagRadius="8"
-                    tagview:titleText="holo blue dark" />
+                    tagview:titleText="another XML TAG" />
+                <it.angelic.tagviewlib.SimpleTagView
+                    android:id="@+id/nuovoTag3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tagview:tagColor="@android:color/holo_purple"
+                    tagview:tagRadius="16"
+                    tagview:titleText="rounder TAG" />
             </LinearLayout>
-
-            <View
-                android:id="@+id/separator2"
-                android:layout_width="fill_parent"
-                android:layout_marginTop="20dp"
-                android:layout_height="1dip"
-                android:background="#CCCCCC" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="example of SimpleTagRelativeLayout:" />
-
-            <it.angelic.tagviewlib.SimpleTagRelativeLayout
-                android:id="@+id/tag_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
 
             <View
                 android:id="@+id/separator3"
