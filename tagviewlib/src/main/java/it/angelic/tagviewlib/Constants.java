@@ -39,7 +39,7 @@ public class Constants {
 			"{\"name\": \"Albania\", \"code\": \"AL\"}, \n" +
 			"{\"name\": \"Algeria\", \"code\": \"DZ\"}, \n" +
 			"{\"name\": \"American Samoa\", \"code\": \"AS\"}, \n" +
-			"{\"name\": \"AndorrA\", \"code\": \"AD\"}, \n" +
+			"{\"name\": \"Andorra\", \"code\": \"AD\"}, \n" +
 			"{\"name\": \"Angola\", \"code\": \"AO\"}, \n" +
 			"{\"name\": \"Anguilla\", \"code\": \"AI\"}, \n" +
 			"{\"name\": \"Antarctica\", \"code\": \"AQ\"}, \n" +
@@ -201,7 +201,6 @@ public class Constants {
 			"{\"name\": \"Oman\", \"code\": \"OM\"}, \n" +
 			"{\"name\": \"Pakistan\", \"code\": \"PK\"}, \n" +
 			"{\"name\": \"Palau\", \"code\": \"PW\"}, \n" +
-			"{\"name\": \"Palestinian Territory, Occupied\", \"code\": \"PS\"}, \n" +
 			"{\"name\": \"Panama\", \"code\": \"PA\"}, \n" +
 			"{\"name\": \"Papua New Guinea\", \"code\": \"PG\"}, \n" +
 			"{\"name\": \"Paraguay\", \"code\": \"PY\"}, \n" +
@@ -278,4 +277,6 @@ public class Constants {
 			"{\"name\": \"Zambia\", \"code\": \"ZM\"}, \n" +
 			"{\"name\": \"Zimbabwe\", \"code\": \"ZW\"} \n" +
 			"]";
+	protected static final int TAG_TEXT_ALPHA = 0xBB;
+	protected static final float TAG_TEXT_WHITE_THOLD = 126f;
 }

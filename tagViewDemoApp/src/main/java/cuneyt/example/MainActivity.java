@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
          * for empty edittext
          */
         if (text.equals("")) {
-            tagGroup.addTags(new ArrayList<SimpleTagView>());
+            tagGroup.setTags(new ArrayList<SimpleTagView>());
             return;
         }
 
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-        tagGroup.addTags(tags);
+        tagGroup.setTags(tags);
 
     }
 

@@ -24,13 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/editText"
-        android:layout_marginLeft="6dp"
         android:background="@android:color/white"
         android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/test_laoyut"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -48,9 +47,9 @@
 
             <it.angelic.tagviewlib.SimpleTagRelativeLayout
                 android:id="@+id/tag_group"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="8dp" />
 
             <View
                 android:id="@+id/separator"

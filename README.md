@@ -3,12 +3,13 @@ Android TagView-HashTagView derived from Cüneyt Çarıkçi
 
 I tried to hide internal implementation and expose tagView APIs only,
 not forcing the user to pass thru RelativeLayout view. SimpleTagView
-is just this humble.
+is just this humble. The Tag view is simpler, since it uses <merge>.
+Some features were lost, I preferred a simpler impletentation.
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TagView-green.svg?style=flat)](https://android-arsenal.com/details/1/2566)
 
 Simple android view to display collection of colorful tags efficiently.
-You can edit the tag's style, and set listener of selecting or deleting tag. 
+You can edit the tag's color and deletability, and set listener for selecting or deleting tag. 
 Example usages can be found in example project.
 
 

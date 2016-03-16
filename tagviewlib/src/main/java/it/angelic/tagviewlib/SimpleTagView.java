@@ -21,6 +21,7 @@ public class SimpleTagView extends LinearLayout {
     private final int backgroundDefaultColor;
     private final int textDefaultColor;
     private final int textDefaultColorInverse;
+    private final int textDefaultColorAccent;
     private TextView tagTextView;
     private TextView tagDeleteTextView;
     private SimpleTag content;
@@ -43,10 +44,12 @@ public class SimpleTagView extends LinearLayout {
                 android.R.attr.colorBackground,
                 android.R.attr.textColorPrimary,
                 android.R.attr.textColorPrimaryInverse,
+                android.R.attr.colorAccent
         });
         backgroundDefaultColor = arrayTheme.getColor(0, 0xFF00FF);
         textDefaultColor = arrayTheme.getColor(1, Color.GRAY);
         textDefaultColorInverse = arrayTheme.getColor(2, Color.LTGRAY);
+        textDefaultColorAccent = arrayTheme.getColor(3, Color.GREEN);
         arrayTheme.recycle();
 
         TypedArray a = context.obtainStyledAttributes(attrs,
@@ -81,7 +84,8 @@ public class SimpleTagView extends LinearLayout {
 
         //richiama selector + color
         setRadius(content.getRadius());
-        resetTextColor();
+        //resetTextColor();
+        setColor(content.getColor());
 
 
         setOnClickListener(new OnClickListener() {
@@ -97,20 +101,17 @@ public class SimpleTagView extends LinearLayout {
     private void resetTextColor() {
         //compute text color
         int computed;
-        if (getColorLuminosity(content.getColor()) > 100f ) {
+        if (Utils.getColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
             Log.d("TagView TEST", "BRIG selected for: " + Integer.toHexString(content.getColor()) + " -"+Integer.toHexString(textDefaultColorInverse));
-            computed = textDefaultColorInverse;
+            computed = textDefaultColorInverse;//testo scuro
+            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(computed), Color.green(computed), Color.blue(computed));
         }else { //use #ffffff
             Log.d("TagView TEST", "DARK selected for: " + Integer.toHexString(content.getColor())+ " -"+Integer.toHexString(textDefaultColor));
             computed = textDefaultColor;
-
+            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(computed), Color.green(computed), Color.blue(computed));
         }
         tagDeleteTextView.setTextColor(computed);
         tagTextView.setTextColor(computed);
-    }
-
-    private double getColorLuminosity(int col) {
-        return Color.red(col)*0.299 + Color.green(col)*0.587 + Color.blue(col)*0.114;
     }
 
     @Override
@@ -119,12 +120,8 @@ public class SimpleTagView extends LinearLayout {
         int tagWidth = (int) tagTextView.getPaint().measureText(content.getName());
         //Log.d("tagWidth", Integer.toString(getWidth()));
         super.onMeasure(tagWidth, heightMeasureSpec);
-       /* Log.d("widthMeasureSpec", Integer.toString(MeasureSpec.getSize(widthMeasureSpec)));
-        Log.d("heightMeasureSpec", Integer.toString(MeasureSpec.getSize(heightMeasureSpec)));
-        Log.d("viewWidth", Integer.toString(getMeasuredWidth()));
-        Log.d("viewHeight", Integer.toString(getMeasuredHeight()));*/
     }
-
+/*
     @Override
     protected void onAttachedToWindow() {
         Log.d("TagView TEST", "onAttachedToWindow() :" + content.getName());
@@ -133,9 +130,8 @@ public class SimpleTagView extends LinearLayout {
         anim.setDuration(1000);
         anim.setFillAfter(true);
         this.startAnimation(anim);
-
     }
-
+*/
     public String getText() {
         return content.getName();
     }
@@ -156,12 +152,12 @@ public class SimpleTagView extends LinearLayout {
     }
 
     public int getColor() {
-        resetTextColor();
         return content.getColor();
     }
 
     public void setColor(int tee) {
         content.setColor(tee);
+        resetTextColor();
         tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
@@ -179,12 +175,12 @@ public class SimpleTagView extends LinearLayout {
         GradientDrawable gd_normal = new GradientDrawable();
         gd_normal.setColor(getColor());
         gd_normal.setCornerRadius(getRadius());
-
+        //transparent border grant
         gd_normal.setStroke(Utils.dipToPx(getContext(), 2f), Color.TRANSPARENT);
-        /*GradientDrawable gd_press = new GradientDrawable();
-        gd_press.setColor(tag.getLayoutColorPressed());
+        GradientDrawable gd_press = new GradientDrawable();
+        gd_press.setColor(textDefaultColorAccent);
         gd_press.setCornerRadius(tag.getRadius());
-        states.addState(new int[]{android.R.attr.state_pressed}, gd_press);*/
+        states.addState(new int[]{android.R.attr.state_pressed}, gd_press);
         //must add state_pressed first，or state_pressed will not take effect
         states.addState(new int[]{}, gd_normal);
         return states;
