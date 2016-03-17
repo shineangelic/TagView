@@ -72,19 +72,22 @@
                     android:id="@+id/nuovoTag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tagview:textSize="14sp"
                     tagview:tagColor="@android:color/holo_green_light"
-                    tagview:titleText="XML TAG" />
-
+                    tagview:titleText="XML" />
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tagview:textSize="8sp"
+                    tagview:isDeletable="true"
                     tagview:tagColor="@android:color/holo_blue_dark"
-                    tagview:titleText="another XML TAG" />
+                    tagview:titleText="with Cross" />
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tagview:textSize="6sp"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
                     tagview:titleText="rounder TAG" />

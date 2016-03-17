@@ -11,7 +11,7 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 23
-        versionCode 1
+        versionCode 3
         versionName project.PUBLISH_VERSION
     }
     buildTypes {
@@ -23,7 +23,6 @@ android {
 }
 
 dependencies {
-
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
 }

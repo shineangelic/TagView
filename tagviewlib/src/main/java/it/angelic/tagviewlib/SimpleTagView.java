@@ -60,6 +60,7 @@ public class SimpleTagView extends LinearLayout {
                 backgroundDefaultColor);
         int valueRadius = a.getInt(R.styleable.SimpleTagView_tagRadius, 4);
         boolean valueDelete = a.getBoolean(R.styleable.SimpleTagView_isDeletable, false);
+        float textSize = a.getDimension(R.styleable.SimpleTagView_textSize,0 );
 
         content.setColor(valueColor);
         content.setName(titleText);
@@ -78,8 +79,13 @@ public class SimpleTagView extends LinearLayout {
         tagTextView =(TextView)getChildAt(0);
         tagTextView.setText(titleText);
 
+
         //tagTextView.setTextColor(textDefaultColor);
         tagDeleteTextView = (TextView) getChildAt(1);
+        if (textSize > 0 ) {
+            tagTextView.setTextSize(textSize);
+            tagDeleteTextView.setTextSize(textSize);
+        }
         tagDeleteTextView.setVisibility(valueDelete ? View.VISIBLE : View.GONE);
 
         //richiama selector + color

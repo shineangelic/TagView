@@ -14,23 +14,45 @@ Example usages can be found in example project.
 
 
 #Feature
-* SimpleTagView extends GroupView, it represents a single TAG.
+* SimpleTagView extends GroupView, it represents a single TAG. Can be deletable or not
 * SimpleTagRelativeLayout is a group of TAGs, allowing add, removal and listeners.
 * Listener of tag selecting and deleting.
 * Can be created from XML file or Java code.
 
-#Usage
- <pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>TagView</span>
+# Usage
+You'll need to add gradle dependency as usual, linking to jcenter when .aar will be requested
+If you really want it, you can use bintray's maven repo:
+<pre>
+    maven {
+            url  "http://dl.bintray.com/shineangelic/maven" 
+        }
+</pre>
+
+## Usage in XML
+After having declared the namespace, with something like  <pre>xmlns:tagview="http://schemas.android.com/apk/res-auto"</pre>
+you may declare a Tag group like this:
+ <pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>it.angelic.tagviewlib.SimpleTagRelativeLayout</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>id</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>@+id/tag_group</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_width</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_height</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_margin</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>10dp</span><span style='color:#800000; '>"</span> <span style='color:#a65700; '>/></span>
 </pre>
+
+or a single tag like this:
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>it.angelic.tagviewlib.SimpleTagView</span>
+            <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>id</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>@+id/myTestTag</span><span style='color:#800000; '>"</span>
+            <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_width</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
+            <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_height</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
+            <span style='color:#007997; '>tagview</span><span style='color:#800080; '>:</span><span style='color:#274796; '>tagColor</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>@android:color/holo_purple</span><span style='color:#800000; '>"</span>
+            <span style='color:#007997; '>tagview</span><span style='color:#800080; '>:</span><span style='color:#274796; '>titleText</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>My HashTag</span><span style='color:#800000; '>"</span> <span style='color:#a65700; '>/></span>
+</pre>
  
- <pre>
- TagView tagGroup = (TagView)findviewById(R.id.tag_view);
+## Usage in code
+<pre>
+ SimpleTagRelativeLayout tagGroup = (SimpleTagRelativeLayout) findviewById(R.id.tag_view);
  //You can add one tag
- tagGroup.addTag(Tag tag);
+ tagGroup.addTag(SimpleTagView tag);
  //You can add multiple tag via ArrayList
  tagGroup.addTags(ArrayList<Tag> tags);
  //Via string array
@@ -40,14 +62,17 @@ Example usages can be found in example project.
             @Override
             public void onTagClick(Tag tag, int position) {
             }
-        });
-        
+        });     
    //set delete listener
-            tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
-            @Override
-            public void onTagDeleted(final TagView view, final Tag tag, final int position) {
-            }
-        });  
+   tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
+   @Override
+   public void onTagDeleted(final TagView view, final Tag tag, final int position) {
+   }
+   });         
+   //or you can add SimpleTagView directly to your Views like this
+   SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
+   tagTer2.setText("Programmatic Deletable");
+   tagTer2.setDeletable(true);
 </pre>
 
 #Libraries Used
@@ -55,7 +80,7 @@ Example usages can be found in example project.
 <a href="https://github.com/drakeet/MaterialDialog">MaterialDialog by drakeet</a>
 
 #License
-Copyright 2016 shine@angelic.it
+Copyright 2016 shine@angelic.it forking Cüneyt Çarıkçi
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
