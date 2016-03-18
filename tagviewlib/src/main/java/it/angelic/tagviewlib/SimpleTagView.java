@@ -26,6 +26,7 @@ public class SimpleTagView extends LinearLayout {
     private TextView tagDeleteTextView;
     private SimpleTag content;
     private OnSimpleTagClickListener mClickListener;
+    private OnSimpleTagDeleteListener mDeleteListener;
 
     public SimpleTagView(Context context) {
         this(context, (AttributeSet) null);
@@ -39,7 +40,7 @@ public class SimpleTagView extends LinearLayout {
     public SimpleTagView(Context context, AttributeSet attrs) {
         super(context, attrs);
         content = new SimpleTag();
-
+        //load defaults
         TypedArray arrayTheme = context.getTheme().obtainStyledAttributes(new int[]{
                 android.R.attr.colorBackground,
                 android.R.attr.textColorPrimary,
@@ -48,16 +49,17 @@ public class SimpleTagView extends LinearLayout {
         });
         backgroundDefaultColor = arrayTheme.getColor(0, 0xFF00FF);
         textDefaultColor = arrayTheme.getColor(1, Color.GRAY);
-        textDefaultColorInverse = arrayTheme.getColor(2, Color.LTGRAY);
+        textDefaultColorInverse = arrayTheme.getColor(2, Color.WHITE);
         textDefaultColorAccent = arrayTheme.getColor(3, Color.GREEN);
         arrayTheme.recycle();
 
+        //styleable attrs in XML
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.SimpleTagView, 0, 0);
         String titleText = a.getString(R.styleable.SimpleTagView_titleText);
 
         int valueColor = a.getColor(R.styleable.SimpleTagView_tagColor,
-                backgroundDefaultColor);
+                Color.DKGRAY);
         int valueRadius = a.getInt(R.styleable.SimpleTagView_tagRadius, 4);
         boolean valueDelete = a.getBoolean(R.styleable.SimpleTagView_isDeletable, false);
         float textSize = a.getDimension(R.styleable.SimpleTagView_textSize,0 );
@@ -85,7 +87,16 @@ public class SimpleTagView extends LinearLayout {
         if (textSize > 0 ) {
             tagTextView.setTextSize(textSize);
             tagDeleteTextView.setTextSize(textSize);
+            tagDeleteTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mDeleteListener != null) {
+                        mDeleteListener.onTagDeleted(SimpleTagView.this);
         }
+                }
+            });
+        }
+
         tagDeleteTextView.setVisibility(valueDelete ? View.VISIBLE : View.GONE);
 
         //richiama selector + color
@@ -94,7 +105,7 @@ public class SimpleTagView extends LinearLayout {
         setColor(content.getColor());
 
 
-        setOnClickListener(new OnClickListener() {
+        tagTextView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mClickListener != null) {
@@ -108,13 +119,12 @@ public class SimpleTagView extends LinearLayout {
         //compute text color
         int computed;
         if (Utils.getColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
-            Log.d("TagView TEST", "BRIG selected for: " + Integer.toHexString(content.getColor()) + " -"+Integer.toHexString(textDefaultColorInverse));
-            computed = textDefaultColorInverse;//testo scuro
-            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(computed), Color.green(computed), Color.blue(computed));
+            Log.d("TagView TEST", "BRIG selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor())+ " -" + Integer.toHexString(textDefaultColor));
+            //testo scuro
+            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(textDefaultColor), Color.green(textDefaultColor), Color.blue(textDefaultColor));
         }else { //use #ffffff
-            Log.d("TagView TEST", "DARK selected for: " + Integer.toHexString(content.getColor())+ " -"+Integer.toHexString(textDefaultColor));
-            computed = textDefaultColor;
-            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(computed), Color.green(computed), Color.blue(computed));
+            Log.d("TagView TEST", "DARK selected for: "  + content.getName() + " -"+ Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColorInverse));
+            computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(textDefaultColorInverse), Color.green(textDefaultColorInverse), Color.blue(textDefaultColorInverse));
         }
         tagDeleteTextView.setTextColor(computed);
         tagTextView.setTextColor(computed);

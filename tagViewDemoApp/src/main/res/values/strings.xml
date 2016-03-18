@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">TagViewDemo</string>
+    <string name="app_name">SimpleTagViewDemo</string>
     <string name="action_settings">Settings</string>
 </resources>

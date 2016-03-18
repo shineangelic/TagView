@@ -164,8 +164,8 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         float total = getPaddingLeft() + getPaddingRight();
 
         int listIndex = 0;// List Index
-        int index_bottom = 1;// The Tag to add below
-        int index_header = 1;// The header tag of this line
+        int indexBottom = 1;// The Tag to add below
+        int indexHeader = 1;// The header tag of this line
 
         SimpleTagView tag_pre = null;
         Log.d("TagView TEST", "Drawing Tags: " + mTags.size());
@@ -208,7 +208,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
                         //TagView.this.remove(position);
                         if (mDeleteListener != null) {
                             SimpleTagView targetTag = item;
-                            mDeleteListener.onTagDeleted(SimpleTagRelativeLayout.this, targetTag, position);
+                            mDeleteListener.onTagDeleted( targetTag   );
                         }
                     }
                 });
@@ -226,25 +226,25 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             Log.d("TagView TEST", "adding. mWidth:" + mWidth + " total:" + total);
             if (mWidth <= total + tagWidth + Utils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
                 //need to add in new line
-                Log.d("TagView TEST", "new line.BELOW index_bottom:" + index_bottom);
-                tagParams.addRule(RelativeLayout.BELOW, index_bottom);
+                Log.d("TagView TEST", "new line.BELOW indexBottom:" + indexBottom);
+                tagParams.addRule(RelativeLayout.BELOW, indexBottom);
                 // initialize total param (layout padding left & layout padding right)
                 total = getPaddingLeft() + getPaddingRight();
-                index_bottom = item.getId();
-                index_header = item.getId();
+                indexBottom = item.getId();
+                indexHeader = item.getId();
             } else {
                 //no need to new line
-                Log.d("TagView TEST", "NO new line. index_header:" + index_header + " me:" + item.getId());
-                tagParams.addRule(RelativeLayout.ALIGN_TOP, index_header);
+                Log.d("TagView TEST", "NO new line. indexHeader:" + indexHeader + " me:" + item.getId());
+                tagParams.addRule(RelativeLayout.ALIGN_TOP, indexHeader);
                 //not header of the line
-                if (tag_pre != null && item.getId() != index_header) {
+                if (tag_pre != null && item.getId() != indexHeader) {
                     Log.d("TagView TEST", "NO new line NO HEAD line. RIGHT_OF:" + tag_pre.getId());
                     tagParams.addRule(RelativeLayout.RIGHT_OF, tag_pre.getId());
                     tagParams.leftMargin = tagMargin;
                     total += tagMargin;
                     if (tag_pre.getMeasuredWidth() < item.getMeasuredWidth()) {
-                        Log.d("TagView TEST", "NEXT will wrap, index_bottom:" + item.getId());
-                        index_bottom = item.getId();
+                        Log.d("TagView TEST", "NEXT will wrap, indexBottom:" + item.getId());
+                        indexBottom = item.getId();
                     }
                 }
             }
@@ -305,6 +305,16 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             drawTags();
         }
     }
+
+    /**
+     * remove tag
+     *
+     * @param position
+     */
+    public void remove(SimpleTagView position) {
+            mTags.remove(position);
+            drawTags();
+        }
 
     public void removeAll() {
         removeAllViews();

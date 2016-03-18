@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Tag examples
-        SimpleTagView tagTer = new SimpleTagView(getApplicationContext());
+        SimpleTagView tagTer = new SimpleTagView(this);
         tagTer.setText("Programmatic");
 
-        SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
+        SimpleTagView tagTer2 = new SimpleTagView(this);
         tagTer2.setText("Programmatic Deletable");
         tagTer2.setDeletable(true);
 
-        SimpleTagView tagTer3 = new SimpleTagView(getApplicationContext());
+        SimpleTagView tagTer3 = new SimpleTagView(this);
         tagTer3.setText("Programmatic Red");
         tagTer3.setColor(Color.argb(255, 255, 0, 0));
 
@@ -110,14 +110,14 @@ public class MainActivity extends AppCompatActivity {
         tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
 
             @Override
-            public void onTagDeleted(final SimpleTagRelativeLayout view,final SimpleTagView tag,final int position) {
+            public void onTagDeleted( final SimpleTagView tag ) {
 
                 final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
                 dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");
                 dialog.setPositiveButton("Yes", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        view.remove(position);
+                        tagGroup.remove(tag);
                         Toast.makeText(MainActivity.this, "\"" + tag.getText() + "\" deleted", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("TagView TEST","setTags size: "+tagList.size());
         for (int i = 0; i < tagList.size(); i++) {
             if (tagList.get(i).getName().toLowerCase().startsWith(text.toLowerCase())) {
-                tag = new SimpleTagView(getApplicationContext(),tagList.get(i).getName());
+                tag = new SimpleTagView(MainActivity.this,tagList.get(i).getName());
                 tag.setRadius(8);
                 tag.setColor(Color.parseColor(tagList.get(i).getColor()));
                 if (i % 2 == 0) // you can set deletable or not

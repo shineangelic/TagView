@@ -26,16 +26,19 @@ public class TagClass {
 
     public String getRandomColor() {
         ArrayList<String> colors = new ArrayList<>();
-        colors.add("#ED7D99");
+        colors.add("#997D99");
         colors.add("#00B0F0");
-        colors.add("#FF66FF");
-        colors.add("#900094");
+        colors.add("#aa66cc");//Holo purple
+        colors.add("#330033");
         colors.add("#BB5050");
         colors.add("#9999FF");
-        colors.add("#FF5FC6");
+        colors.add("#99cc66");//colore verde gatta
         colors.add("#FFC0FF");
-        colors.add("#555555");
-        colors.add("#666666");
+        colors.add("#444444");
+        colors.add("#FFCC81");
+
+        //aa66cc
+
 
         return colors.get(new Random().nextInt(colors.size()));
     }
