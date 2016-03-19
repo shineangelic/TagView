@@ -3,10 +3,9 @@ Android TagView-HashTagView derived from Cüneyt Çarıkçi
 
 I tried to hide internal implementation and expose tagView APIs only,
 not forcing the user to pass thru RelativeLayout view. SimpleTagView
-is just this humble. The Tag view is simpler, since it uses <merge>.
-Some features were lost, I preferred a simpler impletentation.
+is just this humble. The Tag view is simpler, since it uses <merge> layout, but also supports font-awesome.
+Some features were lost, I preferred a simpler implementation.
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-TagView-green.svg?style=flat)](https://android-arsenal.com/details/1/2566)
 
 Simple android view to display collection of colorful tags efficiently.
 You can edit the tag's color and deletability, and set listener for selecting or deleting tag. 
@@ -17,11 +16,12 @@ Example usages can be found in example project.
 * SimpleTagView extends GroupView, it represents a single TAG. Can be deletable or not
 * SimpleTagRelativeLayout is a group of TAGs, allowing add, removal and listeners.
 * Listener of tag selecting and deleting.
+* Font-awesome 4.5.0 native support
 * Can be created from XML file or Java code.
 
 # Usage
 You'll need to add gradle dependency as usual, linking to jcenter when .aar will be requested
-If you really want it, you can use bintray's maven repo:
+If you really want to, you can use bintray's maven repo:
 <pre>
     maven {
             url  "http://dl.bintray.com/shineangelic/maven" 
@@ -45,39 +45,42 @@ or a single tag like this:
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_width</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_height</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>tagview</span><span style='color:#800080; '>:</span><span style='color:#274796; '>tagColor</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>@android:color/holo_purple</span><span style='color:#800000; '>"</span>
+            <span style='color:#007997; '>tagview</span><span style='color:#800080; '>:</span><span style='color:#274796; '>tagAwesome</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>fa-hand-spock-o</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>tagview</span><span style='color:#800080; '>:</span><span style='color:#274796; '>titleText</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>My HashTag</span><span style='color:#800000; '>"</span> <span style='color:#a65700; '>/></span>
 </pre>
  
 ## Usage in code
 <pre>
  SimpleTagRelativeLayout tagGroup = (SimpleTagRelativeLayout) findviewById(R.id.tag_view);
- //You can add one tag
+ //You can add one tag inside SimpleTagRelativeLayout
  tagGroup.addTag(SimpleTagView tag);
  //You can add multiple tag via ArrayList
  tagGroup.addTags(ArrayList<Tag> tags);
  //Via string array
  addTags(String[] tags);
-   //set click listener
-      tagGroup.setOnTagClickListener(new OnTagClickListener() {
+ //set click listener
+ tagGroup.setOnTagClickListener(new OnTagClickListener() {
             @Override
             public void onTagClick(Tag tag, int position) {
             }
-        });     
-   //set delete listener
-   tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
+ });     
+ //set delete listener
+ tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
    @Override
    public void onTagDeleted(final TagView view, final Tag tag, final int position) {
    }
-   });         
-   //or you can add SimpleTagView directly to your Views like this
-   SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
-   tagTer2.setText("Programmatic Deletable");
-   tagTer2.setDeletable(true);
+ });         
+ //or you can add SimpleTagView directly to your Views like this
+ SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
+ tagTer2.setText("Programmatic Deletable");
+ tagTer2.setFontAwesome("fa-warning");
+ tagTer2.setDeletable(true);
 </pre>
 
 #Libraries Used
 <a href="http://jakewharton.github.io/butterknife/">ButterKnife by Jake Wharton</a></br>
 <a href="https://github.com/drakeet/MaterialDialog">MaterialDialog by drakeet</a>
+<a href="http://fontawesome.io">Font Awesome</a> by Dave Gandy
 
 #License
 Copyright 2016 shine@angelic.it forking Cüneyt Çarıkçi

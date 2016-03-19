@@ -82,14 +82,14 @@ public class SimpleTagView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         tagRootView = inflater.inflate(R.layout.simple_tag_view, this, true);
-        tagAwesomeText = (TextView) getChildAt(0);
+        tagAwesomeText = (TextView) getChildAt(1);
 
-        tagTextView = (TextView) getChildAt(1);
+        tagTextView = (TextView) getChildAt(2);
         tagTextView.setText(titleText);
 
 
         //tagTextView.setTextColor(textDefaultColor);
-        tagDeleteTextView = (TextView) getChildAt(2);
+        tagDeleteTextView = (TextView) getChildAt(3);
         if (textSize > 0) {
             tagTextView.setTextSize(textSize);
             tagDeleteTextView.setTextSize(textSize);
@@ -128,11 +128,11 @@ public class SimpleTagView extends LinearLayout {
         //compute text color
         int computed;
         if (SimpleTagViewUtils.getColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
-            //Log.d("TagView TEST", "BRIG selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColor));
+            //Log.d("SimpleTagView", "BRIG selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColor));
             //testo scuro
             computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(textDefaultColor), Color.green(textDefaultColor), Color.blue(textDefaultColor));
         } else { //use #ffffff
-            //Log.d("TagView TEST", "DARK selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColorInverse));
+            //Log.d("SimpleTagView", "DARK selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColorInverse));
             computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(textDefaultColorInverse), Color.green(textDefaultColorInverse), Color.blue(textDefaultColorInverse));
         }
         tagDeleteTextView.setTextColor(computed);
@@ -147,20 +147,9 @@ public class SimpleTagView extends LinearLayout {
         //Log.d("tagWidth", Integer.toString(getWidth()));
         super.onMeasure(tagWidth, heightMeasureSpec);
     }
-/*
-    @Override
-    protected void onAttachedToWindow() {
-        Log.d("TagView TEST", "onAttachedToWindow() :" + content.getName());
-        super.onAttachedToWindow();
-        ScaleAnimation anim = new ScaleAnimation(0, 1, 0, 1);
-        anim.setDuration(1000);
-        anim.setFillAfter(true);
-        this.startAnimation(anim);
-    }
-*/
 
     /**
-     * Get main TextView's text
+     * Get main TAG's TextView text
      *
      * @see TextView#getText()
      */
@@ -171,15 +160,25 @@ public class SimpleTagView extends LinearLayout {
     /**
      * Set main TextView's text
      *
-     * @param tee
+     * @param tagText TAG's title
      * @see TextView#setText(CharSequence)
      */
-    public void setText(CharSequence tee) {
-        content.setName(tee.toString());
-        tagTextView.setText(tee);
+    public void setText(CharSequence tagText) {
+        content.setName(tagText.toString());
+        tagTextView.setText(tagText);
         invalidate();
     }
 
+    /**
+     * Set a font-awesome symbol to be used
+     * as TAG's icon. All symbols included in
+     * font-awesome 2.4.5 will work
+     * {@see https://fortawesome.github.io/Font-Awesome/cheatsheet/}
+     * @param fontName font-awesome icon
+     * @throws FontNotFoundException
+     *
+     * @attr ref R.styleable.SimpleTagView_tagAwesome
+     */
     public void setFontAwesome(String fontName) throws FontNotFoundException {
         try {
             String code = translateAwesomeCode(fontName);
@@ -187,7 +186,7 @@ public class SimpleTagView extends LinearLayout {
             tagAwesomeText.setText(code);
             tagAwesomeText.setVisibility(View.VISIBLE);
         }catch (FontNotFoundException fg){
-            Log.e("TagView TEST", "tagAwesome not found: " + fontName);
+            Log.e("SimpleTagView", "tagAwesome not found: " + fontName);
             tagAwesomeText.setVisibility(View.GONE);
         }
 
@@ -196,7 +195,7 @@ public class SimpleTagView extends LinearLayout {
 
     private String translateAwesomeCode(String fontName) throws FontNotFoundException {
         int codeidx;
-        Log.d("TagView TEST", "translateAwesomeCode set for: " + fontName      );
+        Log.d("SimpleTagView", "translateAwesomeCode set for: " + fontName);
         try {
             if (fontName.startsWith("&")) {
                 codeidx = SimpleTagViewUtils.getAwesomeCodes(getContext()).indexOf(fontName);
@@ -212,8 +211,10 @@ public class SimpleTagView extends LinearLayout {
 
 
     /**
+     * Better using gradius up to 10px
      * {@link GradientDrawable }
      *
+     * @see GradientDrawable#getGradientRadius()
      * @return tag background corner radius in pixels
      */
     public int getRadius() {
@@ -223,24 +224,32 @@ public class SimpleTagView extends LinearLayout {
     /**
      * set corner radius by GradientDrawable.setCornerRadius
      *
-     * @param tee
+     * @param newRadius corner Radius in pixels
      * @see GradientDrawable#setCornerRadius(float)
      */
-    public void setRadius(int tee) {
-        content.setRadius(tee);
+    public void setRadius(int newRadius) {
+        content.setRadius(newRadius);
         tagRootView.setBackgroundDrawable(getSelector(content));
     }
 
     /**
      * Text color will be determined automatically based on
-     * threshold value {@link Constants}
+     * threshold value {@link Constants#TAG_TEXT_WHITE_THOLD}
      *
-     * @return
+     * @return TAG's title color
      */
     public int getColor() {
         return content.getColor();
     }
 
+    /**
+     *
+     *  @see TextView#setTextColor(int)
+     * @see TextView#getTextColors()
+     *
+     * @attr ref  R.styleable#SimpleTagView_tagText
+     * @param tee
+     */
     public void setColor(int tee) {
         content.setColor(tee);
         resetTextColor();
@@ -248,7 +257,8 @@ public class SimpleTagView extends LinearLayout {
     }
 
     /**
-     * Deletable tags automatically adds the symbol '×', but you still need to attach a listener to make it work
+     * Deletable tags automatically adds the symbol '×',
+     * but you still need to attach a listener to make it work
      *
      * @return whether TAG is deletable or not
      */
@@ -256,6 +266,10 @@ public class SimpleTagView extends LinearLayout {
         return content.isDeletable();
     }
 
+    /**
+     * toggles delete icon's visibility
+     * @param isVisible
+     */
     public void setDeletable(boolean isVisible) {
         content.setDeletable(isVisible);
         tagDeleteTextView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
@@ -285,5 +299,9 @@ public class SimpleTagView extends LinearLayout {
      */
     public void setOnSimpleTagClickListener(OnSimpleTagClickListener clickListener) {
         mClickListener = clickListener;
+    }
+
+    public void setOnSimpleTagDeleteListener(OnSimpleTagDeleteListener delListener){
+        mDeleteListener = delListener;
     }
 } 
