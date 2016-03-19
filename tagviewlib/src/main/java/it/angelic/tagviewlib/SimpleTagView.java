@@ -202,10 +202,7 @@ public class SimpleTagView extends LinearLayout {
                 codeidx = SimpleTagViewUtils.getAwesomeCodes(getContext()).indexOf(fontName);
             } else {//try translate
                 //codes according to http://fortawesome.github.io/Font-Awesome/cheatsheet/
-                String work = fontName.replaceAll("-","_");
-                if (work.startsWith("fa_"))
-                    work = work.replace("fa_", "icon_");//only 1st
-                codeidx = SimpleTagViewUtils.getAwesomeNames(getContext()).indexOf(work);
+                codeidx = SimpleTagViewUtils.getAwesomeNames(getContext()).indexOf(fontName);
             }
             return SimpleTagViewUtils.getAwesomeCodes(getContext()).get(codeidx);
         }catch (FontNotFoundException | ArrayIndexOutOfBoundsException | NullPointerException fr){
