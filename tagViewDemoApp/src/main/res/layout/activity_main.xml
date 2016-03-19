@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:textSize="6sp"
-                    tagview:tagAwesome="fa-code-fork"
+                    tagview:tagAwesome="fa-hashtag"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
                     tagview:tagText="rounder TAG" />
