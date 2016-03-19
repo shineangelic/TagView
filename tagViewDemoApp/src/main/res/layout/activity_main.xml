@@ -74,23 +74,26 @@
                     android:layout_height="wrap_content"
                     tagview:textSize="14sp"
                     tagview:tagColor="#99CC66"
-                    tagview:titleText="XML" />
+                    tagview:tagAwesome="icon_tag"
+                    tagview:tagText="XML" />
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:textSize="8sp"
                     tagview:isDeletable="true"
+                    tagview:tagAwesome="icon_bug"
                     tagview:tagColor="#00b0f0"
-                    tagview:titleText="with Cross" />
+                    tagview:tagText="with Cross" />
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:textSize="6sp"
+                    tagview:tagAwesome="icon_code_fork"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
-                    tagview:titleText="rounder TAG" />
+                    tagview:tagText="rounder TAG" />
             </LinearLayout>
 
             <View

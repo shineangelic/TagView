@@ -9,6 +9,16 @@ class SimpleTag {
     private int color;
     private int radius;
 
+    public String getFontAwesomeCode() {
+        return fontAwesomeCode;
+    }
+
+    public void setFontAwesomeCode(String fontAwesomeCode) {
+        this.fontAwesomeCode = fontAwesomeCode;
+    }
+
+    private String fontAwesomeCode;
+
     public boolean isDeletable() {
         return isDeletable;
     }

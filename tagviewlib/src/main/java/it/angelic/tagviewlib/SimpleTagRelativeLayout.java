@@ -106,12 +106,12 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         });
         // get AttributeSet
         TypedArray typeArray = ctx.obtainStyledAttributes(attrs, R.styleable.TagRelativeLayout, defStyle, defStyle);
-        this.lineMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_lineMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_LINE_MARGIN));
-        this.tagMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_tagMargin, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_MARGIN));
-        this.textPaddingLeft = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingLeft, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_LEFT));
-        this.textPaddingRight = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingRight, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_RIGHT));
-        this.textPaddingTop = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingTop, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_TOP));
-        this.texPaddingBottom = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingBottom, Utils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_BOTTOM));
+        this.lineMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_lineMargin, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_LINE_MARGIN));
+        this.tagMargin = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_tagMargin, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_MARGIN));
+        this.textPaddingLeft = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingLeft, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_LEFT));
+        this.textPaddingRight = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingRight, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_RIGHT));
+        this.textPaddingTop = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingTop, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_TOP));
+        this.texPaddingBottom = (int) typeArray.getDimension(R.styleable.TagRelativeLayout_textPaddingBottom, SimpleTagViewUtils.dipToPx(this.getContext(), Constants.DEFAULT_TAG_TEXT_PADDING_BOTTOM));
         typeArray.recycle();
 
         mWidth = getWidth();
@@ -195,7 +195,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             int sHint = (int) tagTextView.getPaint().measureText(item.getText());
             item.measure(sHint, 40);
             // calculate　of tag layout width
-            float tagWidth = item.getMeasuredWidth() + textPaddingLeft + textPaddingRight;
+            float tagWidth = item.getMeasuredWidth() ;
             // tagTextView padding (left & right)
             Log.d("TagView TEST", "re-adding " + item.getText() + " id: " + item.getId() + "- tagWidth=" + tagWidth + " mHeight=" + item.getMeasuredHeight());
             // deletable text
@@ -212,7 +212,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
                         }
                     }
                 });
-                tagWidth += deletableView.getPaint().measureText("×") + textPaddingLeft + textPaddingRight;
+                tagWidth += deletableView.getPaint().measureText("×")  ;
                 // deletableView Padding (left & right)
             } else {
                 deletableView.setVisibility(View.GONE);
@@ -224,7 +224,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
             //add margin of each line
             tagParams.bottomMargin = lineMargin;
             Log.d("TagView TEST", "adding. mWidth:" + mWidth + " total:" + total);
-            if (mWidth <= total + tagWidth + Utils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
+            if (mWidth <= total + tagWidth + SimpleTagViewUtils.dipToPx(this.getContext(), Constants.LAYOUT_WIDTH_OFFSET)) {
                 //need to add in new line
                 Log.d("TagView TEST", "new line.BELOW indexBottom:" + indexBottom);
                 tagParams.addRule(RelativeLayout.BELOW, indexBottom);
@@ -327,7 +327,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setLineMargin(float lineMargin) {
-        this.lineMargin = Utils.dipToPx(getContext(), lineMargin);
+        this.lineMargin = SimpleTagViewUtils.dipToPx(getContext(), lineMargin);
     }
 
     public int getTagMargin() {
@@ -335,7 +335,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setTagMargin(float tagMargin) {
-        this.tagMargin = Utils.dipToPx(getContext(), tagMargin);
+        this.tagMargin = SimpleTagViewUtils.dipToPx(getContext(), tagMargin);
     }
 
     public int getTextPaddingLeft() {
@@ -343,7 +343,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setTextPaddingLeft(float textPaddingLeft) {
-        this.textPaddingLeft = Utils.dipToPx(getContext(), textPaddingLeft);
+        this.textPaddingLeft = SimpleTagViewUtils.dipToPx(getContext(), textPaddingLeft);
     }
 
     public int getTextPaddingRight() {
@@ -351,7 +351,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setTextPaddingRight(float textPaddingRight) {
-        this.textPaddingRight = Utils.dipToPx(getContext(), textPaddingRight);
+        this.textPaddingRight = SimpleTagViewUtils.dipToPx(getContext(), textPaddingRight);
     }
 
     public int getTextPaddingTop() {
@@ -359,7 +359,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setTextPaddingTop(float textPaddingTop) {
-        this.textPaddingTop = Utils.dipToPx(getContext(), textPaddingTop);
+        this.textPaddingTop = SimpleTagViewUtils.dipToPx(getContext(), textPaddingTop);
     }
 
     public int getTexPaddingBottom() {
@@ -367,7 +367,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     }
 
     public void setTexPaddingBottom(float texPaddingBottom) {
-        this.texPaddingBottom = Utils.dipToPx(getContext(), texPaddingBottom);
+        this.texPaddingBottom = SimpleTagViewUtils.dipToPx(getContext(), texPaddingBottom);
     }
 
     /**

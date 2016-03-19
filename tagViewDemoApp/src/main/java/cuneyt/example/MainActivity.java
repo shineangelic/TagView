@@ -17,15 +17,17 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cuneyt.example.model.TagClass;
+import it.angelic.tagviewlib.Constants;
+import it.angelic.tagviewlib.OnSimpleTagClickListener;
 import it.angelic.tagviewlib.OnSimpleTagDeleteListener;
 import it.angelic.tagviewlib.SimpleTagRelativeLayout;
 import it.angelic.tagviewlib.SimpleTagView;
-import it.angelic.tagviewlib.Constants;
-import it.angelic.tagviewlib.OnSimpleTagClickListener;
+import it.angelic.tagviewlib.SimpleTagViewUtils;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleTagView tagTer3 = new SimpleTagView(this);
         tagTer3.setText("Programmatic Red");
+        tagTer3.setFontAwesome("fa-test");
         tagTer3.setColor(Color.argb(255, 255, 0, 0));
 
         testRel.addView(tagTer);
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         tagGroup.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
             @Override
             public void onSimpleTagClick(SimpleTagView tag) {
-                Log.d("TagView TEST", "TAG click: " + tag.getText() );
+                Log.d("TagView TEST", "TAG click: " + tag.getText());
                 editText.setText(tag.getText());
             }
 
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
 
             @Override
-            public void onTagDeleted( final SimpleTagView tag ) {
+            public void onTagDeleted(final SimpleTagView tag) {
 
                 final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
                 dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");
@@ -132,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-
 
 
         });
@@ -157,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTags(CharSequence cs) {
+        Random rnd = new Random();
         String text = cs.toString();
         ArrayList<SimpleTagView> tags = new ArrayList<>();
         SimpleTagView tag;
@@ -174,14 +177,18 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Log.d("TagView TEST","setTags size: "+tagList.size());
+        Log.d("TagView TEST", "setTags size: " + tagList.size());
         for (int i = 0; i < tagList.size(); i++) {
             if (tagList.get(i).getName().toLowerCase().startsWith(text.toLowerCase())) {
-                tag = new SimpleTagView(MainActivity.this,tagList.get(i).getName());
+                tag = new SimpleTagView(MainActivity.this, tagList.get(i).getName());
                 tag.setRadius(8);
                 tag.setColor(Color.parseColor(tagList.get(i).getColor()));
                 if (i % 2 == 0) // you can set deletable or not
                     tag.setDeletable(true);
+                if (i % 3 == 0) {//add random icons
+                    int rndIdx = rnd.nextInt(SimpleTagViewUtils.getAwesomeNames(MainActivity.this).size());
+                    tag.setFontAwesome(SimpleTagViewUtils.getAwesomeNames(MainActivity.this).get(rndIdx));
+                }
                 tags.add(tag);
                 Log.d("TagView TEST", "match found: " + tag);
                 counter++;

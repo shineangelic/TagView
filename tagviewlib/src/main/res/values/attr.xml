@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SimpleTagView">
-        <attr name="titleText" format="string" localization="suggested" />
+        <attr name="tagText" format="string" localization="suggested" />
         <attr name="tagColor" format="color" />
         <attr name="tagRadius" format="integer" />
         <attr name="textSize" format="dimension" />
         <attr name="isDeletable" format="boolean" />
+        <attr name="tagAwesome" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="TagRelativeLayout">

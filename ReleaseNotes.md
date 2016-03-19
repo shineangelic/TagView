@@ -1,3 +1,6 @@
+# 1.2.0
+* font-awesome support
+
 # 1.1.0
 * text size support in XML
 

@@ -16,7 +16,7 @@ public class Constants {
 	
 	public static final float LAYOUT_WIDTH_OFFSET = 2;
 
-
+	public static final String FONT = "fontawesome-webfont.ttf";
 
 	/**
 	 * list from:
