@@ -1,6 +1,8 @@
 package it.angelic.tagviewlib;
 
 /**
+ * Classic POJO for {@link SimpleTagView}'s data
+ *
  * Created by shine@angelic.it on 14/03/2016.
  */
 class SimpleTag {

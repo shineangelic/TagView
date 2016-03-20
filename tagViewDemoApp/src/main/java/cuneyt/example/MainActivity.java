@@ -4,13 +4,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -28,26 +30,31 @@ import it.angelic.tagviewlib.OnSimpleTagDeleteListener;
 import it.angelic.tagviewlib.SimpleTagRelativeLayout;
 import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.SimpleTagViewUtils;
-import me.drakeet.materialdialog.MaterialDialog;
 
 public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.tag_group)
-    SimpleTagRelativeLayout tagGroup;
+     SimpleTagRelativeLayout tagGroup;
 
     @InjectView(R.id.editText)
-    EditText editText;
+     EditText editText;
 
     @InjectView(R.id.test_laoyut)
-    LinearLayout testRel;
+     LinearLayout testRel;
 
     @InjectView(R.id.nuovoTag)
     SimpleTagView testRaff;
 
+    @InjectView(R.id.nuovoTagAwesome)
+    SimpleTagView testAwe;
+
+    @InjectView(R.id.AwesomeSpinner)
+    Spinner testSpinner;
+
     /**
      * sample country list
      */
-    ArrayList<TagClass> tagList;
+    private ArrayList<TagClass> tagList;
 
 
     @Override
@@ -61,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Tag examples
+        //programmatic Tag examples
         SimpleTagView tagTer = new SimpleTagView(this);
         tagTer.setText("Programmatic");
 
@@ -93,11 +99,20 @@ public class MainActivity extends AppCompatActivity {
         testRel.addView(tagTer2);
         testRel.addView(tagTer3);
 
-        testRaff.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
+        //DEMO listeners
+        tagTer2.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
             @Override
             public void onSimpleTagClick(SimpleTagView tag) {
                 Log.d("TagView TEST", "TAG click: " + tag.getText()
                 );
+            }
+        });
+        tagTer2.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
+            @Override
+            public void onTagDeleted(SimpleTagView tag) {
+                testRel.removeView(tag);
+                Log.w("TagView TEST", "TAG delete: " + tag.getText());
+                Toast.makeText(MainActivity.this, "Tag Deleted! " + tag.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,35 +126,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
         tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
-
             @Override
             public void onTagDeleted(final SimpleTagView tag) {
-
-                final MaterialDialog dialog = new MaterialDialog(MainActivity.this);
-                dialog.setMessage("\"" + tag.getText() + "\" will be deleted. Are you sure?");
-                dialog.setPositiveButton("Yes", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tagGroup.remove(tag);
-                        Toast.makeText(MainActivity.this, "\"" + tag.getText() + "\" deleted", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setNegativeButton("No", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
-
+                tagGroup.remove(tag);
+                Toast.makeText(MainActivity.this, "Tag Deleted! " + tag.getText(), Toast.LENGTH_SHORT).show();
             }
-
-
         });
 
+        //dynamically test font-awesome
+        testSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // int idx = testSpinner.getSelectedItemPosition();
+                String awSom = SimpleTagViewUtils.getAwesomeNames(MainActivity.this).get(position);
+                testAwe.setFontAwesome(awSom);
+                testAwe.setText(awSom);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     private void prepareTags() {
@@ -197,32 +206,11 @@ public class MainActivity extends AppCompatActivity {
                  if (counter == 10)
                  break;
                  */
-
             }
         }
         tagGroup.setTags(tags);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

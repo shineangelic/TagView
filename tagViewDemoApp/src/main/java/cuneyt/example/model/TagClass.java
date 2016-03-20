@@ -5,13 +5,15 @@ import java.util.Random;
 
 
 /**
+ * Inner support POJO to keep TAG's data
+ *
  * Created by Cuneyt on 21.8.2015.
  */
 public class TagClass {
 
-    String code;
-    String name;
-    String color;
+    private String code;
+    private String name;
+    private String color;
 
     public TagClass() {
 

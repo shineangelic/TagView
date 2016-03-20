@@ -1,7 +1,5 @@
 package it.angelic.tagviewlib;
 
-import android.graphics.Color;
-
 public class Constants {
 
 	//use dp and sp, not px

@@ -9,21 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tags_laoyut"
-        android:layout_alignLeft="@+id/tags_laoyut"
-        android:layout_alignRight="@+id/tags_laoyut"
-        android:layout_alignStart="@+id/tags_laoyut"
-        android:hint="Type the name of your Country" />
-
     <ScrollView
         android:id="@+id/tags_laoyut"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editText"
         android:background="@android:color/white"
         android:visibility="visible">
 
@@ -44,7 +33,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="example of SimpleTagRelativeLayout:" />
-
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Type the name of your Country" />
             <it.angelic.tagviewlib.SimpleTagRelativeLayout
                 android:id="@+id/tag_group"
                 android:layout_width="match_parent"
@@ -72,7 +65,7 @@
                     android:id="@+id/nuovoTag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tagview:textSize="14sp"
+                    tagview:textSize="20sp"
                     tagview:tagColor="#99CC66"
                     tagview:tagAwesome="icon_tag"
                     tagview:tagText="XML" />
@@ -80,7 +73,7 @@
                     android:id="@+id/nuovoTag2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tagview:textSize="8sp"
+                    tagview:textSize="16sp"
                     tagview:isDeletable="true"
                     tagview:tagAwesome="fa-bug"
                     tagview:tagColor="#00b0f0"
@@ -89,12 +82,41 @@
                     android:id="@+id/nuovoTag3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tagview:textSize="6sp"
+                    tagview:textSize="12sp"
                     tagview:tagAwesome="fa-hashtag"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
                     tagview:tagText="rounder TAG" />
             </LinearLayout>
+
+            <View
+                android:id="@+id/separator3s"
+                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Font-awesome test:" />
+            <it.angelic.tagviewlib.SimpleTagView
+                android:layout_marginTop="6dp"
+                android:id="@+id/nuovoTagAwesome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tagview:textSize="20sp"
+                tagview:tagColor="@android:color/transparent"
+                tagview:tagAwesome="fa-hashtag"
+                tagview:tagText="font-awesome" />
+            <Spinner
+                android:entries="@array/all_icon_names"
+                android:id="@+id/AwesomeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
 
             <View
                 android:id="@+id/separator3"

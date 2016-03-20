@@ -9,6 +9,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,7 +67,7 @@ public class SimpleTagView extends LinearLayout {
                 Color.DKGRAY);
         int valueRadius = a.getInt(R.styleable.SimpleTagView_tagRadius, 4);
         boolean valueDelete = a.getBoolean(R.styleable.SimpleTagView_isDeletable, false);
-        float textSize = a.getDimension(R.styleable.SimpleTagView_textSize, 0);
+        float textSize = a.getDimensionPixelSize(R.styleable.SimpleTagView_textSize, 0);
         String tagAwesome = a.getString(R.styleable.SimpleTagView_tagAwesome);
 
         content.setColor(valueColor);
@@ -87,24 +88,25 @@ public class SimpleTagView extends LinearLayout {
         tagTextView = (TextView) getChildAt(2);
         tagTextView.setText(titleText);
 
-
         //tagTextView.setTextColor(textDefaultColor);
         tagDeleteTextView = (TextView) getChildAt(3);
         if (textSize > 0) {
-            tagTextView.setTextSize(textSize);
-            tagDeleteTextView.setTextSize(textSize);
-            tagAwesomeText.setTextSize(textSize);
+            tagTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
+            tagDeleteTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
+            tagAwesomeText.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
         }
-
+        try {
             tagAwesomeText.setTypeface(SimpleTagViewUtils.getTypeface(context, Constants.FONT));
             setFontAwesome(tagAwesome);
+        } catch (FontNotFoundException nf) {
+            Log.e("SimpleTagView", "FONT-AWESOME not found in asset folder");
+        }
         tagDeleteTextView.setVisibility(valueDelete ? View.VISIBLE : View.GONE);
 
         //richiama selector + color
         setRadius(content.getRadius());
         //resetTextColor();
         setColor(content.getColor());
-
 
         tagTextView.setOnClickListener(new OnClickListener() {
             @Override
@@ -127,6 +129,7 @@ public class SimpleTagView extends LinearLayout {
     private void resetTextColor() {
         //compute text color
         int computed;
+        if (Color.alpha(content.getColor()) > 50){
         if (SimpleTagViewUtils.getColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
             //Log.d("SimpleTagView", "BRIG selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColor));
             //testo scuro
@@ -137,7 +140,7 @@ public class SimpleTagView extends LinearLayout {
         }
         tagDeleteTextView.setTextColor(computed);
         tagTextView.setTextColor(computed);
-        tagAwesomeText.setTextColor(computed);
+        tagAwesomeText.setTextColor(computed);}
     }
 
     @Override
@@ -174,9 +177,9 @@ public class SimpleTagView extends LinearLayout {
      * as TAG's icon. All symbols included in
      * font-awesome 2.4.5 will work
      * {@see https://fortawesome.github.io/Font-Awesome/cheatsheet/}
+     *
      * @param fontName font-awesome icon
      * @throws FontNotFoundException
-     *
      * @attr ref R.styleable.SimpleTagView_tagAwesome
      */
     public void setFontAwesome(String fontName) throws FontNotFoundException {
@@ -185,7 +188,7 @@ public class SimpleTagView extends LinearLayout {
             content.setFontAwesomeCode(code);
             tagAwesomeText.setText(code);
             tagAwesomeText.setVisibility(View.VISIBLE);
-        }catch (FontNotFoundException fg){
+        } catch (FontNotFoundException fg) {
             Log.e("SimpleTagView", "tagAwesome not found: " + fontName);
             tagAwesomeText.setVisibility(View.GONE);
         }
@@ -204,7 +207,7 @@ public class SimpleTagView extends LinearLayout {
                 codeidx = SimpleTagViewUtils.getAwesomeNames(getContext()).indexOf(fontName);
             }
             return SimpleTagViewUtils.getAwesomeCodes(getContext()).get(codeidx);
-        }catch (FontNotFoundException | ArrayIndexOutOfBoundsException | NullPointerException fr){
+        } catch (FontNotFoundException | ArrayIndexOutOfBoundsException | NullPointerException fr) {
             throw new FontNotFoundException("Font with code not found: " + fontName);
         }
     }
@@ -214,8 +217,8 @@ public class SimpleTagView extends LinearLayout {
      * Better using gradius up to 10px
      * {@link GradientDrawable }
      *
-     * @see GradientDrawable#getGradientRadius()
      * @return tag background corner radius in pixels
+     * @see GradientDrawable#getGradientRadius()
      */
     public int getRadius() {
         return content.getRadius();
@@ -243,12 +246,10 @@ public class SimpleTagView extends LinearLayout {
     }
 
     /**
-     *
-     *  @see TextView#setTextColor(int)
-     * @see TextView#getTextColors()
-     *
-     * @attr ref  R.styleable#SimpleTagView_tagText
      * @param tee
+     * @attr ref  R.styleable#SimpleTagView_tagText
+     * @see TextView#setTextColor(int)
+     * @see TextView#getTextColors()
      */
     public void setColor(int tee) {
         content.setColor(tee);
@@ -268,6 +269,7 @@ public class SimpleTagView extends LinearLayout {
 
     /**
      * toggles delete icon's visibility
+     *
      * @param isVisible
      */
     public void setDeletable(boolean isVisible) {
@@ -301,7 +303,7 @@ public class SimpleTagView extends LinearLayout {
         mClickListener = clickListener;
     }
 
-    public void setOnSimpleTagDeleteListener(OnSimpleTagDeleteListener delListener){
+    public void setOnSimpleTagDeleteListener(OnSimpleTagDeleteListener delListener) {
         mDeleteListener = delListener;
     }
 } 

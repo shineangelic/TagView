@@ -50,9 +50,10 @@ or a single tag like this:
 </pre>
  
 ## Usage in code
+You can add one tag inside SimpleTagRelativeLayout:
 <pre>
  SimpleTagRelativeLayout tagGroup = (SimpleTagRelativeLayout) findviewById(R.id.tag_view);
- //You can add one tag inside SimpleTagRelativeLayout
+ 
  tagGroup.addTag(SimpleTagView tag);
  //You can add multiple tag via ArrayList
  tagGroup.addTags(ArrayList<Tag> tags);
@@ -69,8 +70,11 @@ or a single tag like this:
    @Override
    public void onTagDeleted(final TagView view, final Tag tag, final int position) {
    }
- });         
- //or you can add SimpleTagView directly to your Views like this
+ });
+ </pre>
+ 
+ Or you can add SimpleTagView directly to your Views like this:
+ <pre>
  SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
  tagTer2.setText("Programmatic Deletable");
  tagTer2.setFontAwesome("fa-warning");
@@ -78,8 +82,8 @@ or a single tag like this:
 </pre>
 
 #Libraries Used
-<a href="http://jakewharton.github.io/butterknife/">ButterKnife by Jake Wharton</a></br>
-<a href="https://github.com/drakeet/MaterialDialog">MaterialDialog by drakeet</a>
+<a href="http://jakewharton.github.io/butterknife/">ButterKnife</a> by Jake Wharton
+<a href="https://github.com/drakeet/MaterialDialog">MaterialDialog</a> by drakeet
 <a href="http://fontawesome.io">Font Awesome</a> by Dave Gandy
 
 #License

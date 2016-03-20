@@ -21,21 +21,16 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     /**
      * custom layout param
      */
-    int lineMargin;
-    int tagMargin;
-    int textPaddingLeft;
-    int textPaddingRight;
-    int textPaddingTop;
-    int texPaddingBottom;
+    private int lineMargin;
+    private int tagMargin;
+    private int textPaddingLeft;
+    private int textPaddingRight;
+    private int textPaddingTop;
+    private int texPaddingBottom;
     /**
      * tag list
      */
     private List<SimpleTagView> mTags = new ArrayList<SimpleTagView>();
-    /**
-     * System Service
-     */
-    private LayoutInflater mInflater;
-    private ViewTreeObserver mViewTreeObserber;
     /**
      * listener
      */
@@ -51,35 +46,16 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
      */
     private boolean mInitialized = false;
 
-
-    /**
-     * constructor
-     *
-     * @param ctx
-     */
     public SimpleTagRelativeLayout(Context ctx) {
         super(ctx, null);
         initialize(ctx, null, 0);
     }
 
-    /**
-     * constructor
-     *
-     * @param ctx
-     * @param attrs
-     */
     public SimpleTagRelativeLayout(Context ctx, AttributeSet attrs) {
         super(ctx, attrs);
         initialize(ctx, attrs, 0);
     }
 
-    /**
-     * constructor
-     *
-     * @param ctx
-     * @param attrs
-     * @param defStyle
-     */
     public SimpleTagRelativeLayout(Context ctx, AttributeSet attrs, int defStyle) {
         super(ctx, attrs, defStyle);
         initialize(ctx, attrs, defStyle);
@@ -93,8 +69,11 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
      * @param defStyle
      */
     private void initialize(Context ctx, AttributeSet attrs, int defStyle) {
-        mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mViewTreeObserber = getViewTreeObserver();
+        /*
+      System Service
+     */
+        LayoutInflater mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewTreeObserver mViewTreeObserber = getViewTreeObserver();
         mViewTreeObserber.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -207,8 +186,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
                     public void onClick(View v) {
                         //TagView.this.remove(position);
                         if (mDeleteListener != null) {
-                            SimpleTagView targetTag = item;
-                            mDeleteListener.onTagDeleted( targetTag   );
+                            mDeleteListener.onTagDeleted( item   );
                         }
                     }
                 });
@@ -263,6 +241,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     //----------------- separator  -----------------//
 
     /**
+     * Add a single tag, the draw them all
      * @param tag
      */
     public void addTag(SimpleTagView tag) {
@@ -276,7 +255,10 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         drawTags();
     }
 
-
+    /**
+     * Add a tag array, then draw them all
+     * @param tag to be added to existing one
+     */
     public void setTags(SimpleTagView[] tags) {
         if (tags == null) return;
         for (SimpleTagView item : tags) {
