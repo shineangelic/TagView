@@ -2,9 +2,10 @@
 Android TagView-HashTagView derived from Cüneyt Çarıkçi
 
 I tried to hide internal implementation and expose tagView APIs only,
-not forcing the user to pass thru RelativeLayout view. SimpleTagView
-is just this humble. The Tag view is simpler, since it uses <merge> layout, but also supports font-awesome.
-Some features were lost, I preferred a simpler implementation.
+not forcing the user to pass thru a container RelativeLayout view. SimpleTagView
+is simpler, since it uses <merge> layout, but also supports font-awesome to put an icon on your TAGs.
+
+
 
 
 Simple android view to display collection of colorful tags efficiently.
@@ -83,7 +84,6 @@ You can add one tag inside SimpleTagRelativeLayout:
 
 #Libraries Used
 <a href="http://jakewharton.github.io/butterknife/">ButterKnife</a> by Jake Wharton
-<a href="https://github.com/drakeet/MaterialDialog">MaterialDialog</a> by drakeet
 <a href="http://fontawesome.io">Font Awesome</a> by Dave Gandy
 
 #License

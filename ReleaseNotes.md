@@ -1,3 +1,6 @@
+# 1.2.1
+* unit testing, lint fixes, bugfixes
+
 # 1.2.0
 * font-awesome support
 

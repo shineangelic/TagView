@@ -8,6 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -18,5 +19,9 @@
         </activity>
     </application>
 
-
+    <instrumentation
+        android:label="Multdex"
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="cuneyt.example.test"
+        android:functionalTest="true"/>
 </manifest>

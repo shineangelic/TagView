@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.Html;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -21,8 +19,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import cuneyt.example.model.TagClass;
 import it.angelic.tagviewlib.Constants;
 import it.angelic.tagviewlib.OnSimpleTagClickListener;
@@ -33,22 +31,22 @@ import it.angelic.tagviewlib.SimpleTagViewUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.tag_group)
+    @Bind(R.id.tag_group)
      SimpleTagRelativeLayout tagGroup;
 
-    @InjectView(R.id.editText)
+    @Bind(R.id.editText)
      EditText editText;
 
-    @InjectView(R.id.test_laoyut)
+    @Bind(R.id.test_laoyut)
      LinearLayout testRel;
 
-    @InjectView(R.id.nuovoTag)
+    @Bind(R.id.nuovoTag)
     SimpleTagView testRaff;
 
-    @InjectView(R.id.nuovoTagAwesome)
+    @Bind(R.id.nuovoTagAwesome)
     SimpleTagView testAwe;
 
-    @InjectView(R.id.AwesomeSpinner)
+    @Bind(R.id.AwesomeSpinner)
     Spinner testSpinner;
 
     /**
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         prepareTags();
 
 
@@ -99,14 +97,16 @@ public class MainActivity extends AppCompatActivity {
         testRel.addView(tagTer2);
         testRel.addView(tagTer3);
 
-        //DEMO listeners
-        tagTer2.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
+        OnSimpleTagClickListener commonTagListener = new OnSimpleTagClickListener() {
             @Override
             public void onSimpleTagClick(SimpleTagView tag) {
-                Log.d("TagView TEST", "TAG click: " + tag.getText()
-                );
+                Log.d("TagView TEST", "TAG click: " + tag.getText());
             }
-        });
+        };
+
+        //DEMO listeners
+        tagTer2.setOnSimpleTagClickListener(commonTagListener);
+        tagTer3.setOnSimpleTagClickListener(commonTagListener);
         tagTer2.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
             @Override
             public void onTagDeleted(SimpleTagView tag) {
@@ -116,14 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tagGroup.setOnSimpleTagClickListener(new OnSimpleTagClickListener() {
-            @Override
-            public void onSimpleTagClick(SimpleTagView tag) {
-                Log.d("TagView TEST", "TAG click: " + tag.getText());
-                editText.setText(tag.getText());
-            }
-
-        });
+        tagGroup.setOnSimpleTagClickListener(commonTagListener);
 
         tagGroup.setOnSimpleTagDeleteListener(new OnSimpleTagDeleteListener() {
             @Override
@@ -167,16 +160,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void setTags(CharSequence cs) {
         Random rnd = new Random();
         String text = cs.toString();
         ArrayList<SimpleTagView> tags = new ArrayList<>();
         SimpleTagView tag;
-        /**
-         * counter for prevent frozen effect
-         * if the tags number is greather than 20 some device will a bit frozen
-         */
-        int counter = 0;
 
         /**
          * for empty edittext
@@ -200,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 tags.add(tag);
                 Log.d("TagView TEST", "match found: " + tag);
-                counter++;
                 /**
                  * if you don't want show all tags. You can set a limit.
                  if (counter == 10)
