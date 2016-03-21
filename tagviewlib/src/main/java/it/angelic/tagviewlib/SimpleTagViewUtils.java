@@ -21,21 +21,21 @@ public class SimpleTagViewUtils {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 
-    public static double getColorLuminosity(int col) {
+    public static double getWeigthedColorLuminosity(int col) {
         return Color.red(col) * 0.299 + Color.green(col) * 0.587 + Color.blue(col) * 0.114;
     }
 
     /**
-     * Returns the Typeface from the given context with the given name typeface
+     * Returns the font-awesome Typeface from the given context.
+     * Use this typeface with entities returned by {@link #getAwesomeCodes(Context)}
      *
-     * @param context  Context to get the assets from
-     * @param typeface name of the ttf file
+     * @param context  Context to get the assets from 
      * @return Typeface from the given context with the given name
      */
-    public static Typeface getTypeface(Context context, String typeface) throws FontNotFoundException {
+    public static Typeface getAwesomeTypeface(Context context ) throws FontNotFoundException {
         if (mFont == null) {
             try {
-                mFont = Typeface.createFromAsset(context.getAssets(), typeface);
+                mFont = Typeface.createFromAsset(context.getAssets(), Constants.FONT);
             } catch (Exception e) {
                 throw new FontNotFoundException(e.getMessage());
             }
@@ -45,9 +45,10 @@ public class SimpleTagViewUtils {
 
     /**
      * Used to retrieve Entities used to map font-awesome symbols
+     * as mapped on font-awesome 4.5.0 cheatsheet
      *
-     * @param ctx
-     * @return
+     * @param ctx Context to get the symbols from
+     * @return  ArrayList of all font-awesome unicodes
      */
     public static ArrayList<String> getAwesomeCodes(Context ctx) {
         if (mAllIcons == null) {
@@ -57,10 +58,11 @@ public class SimpleTagViewUtils {
         return mAllIcons;
     }
     /**
-     * Used to retrieve Entities used to map font-awesome symbol names.
+     * Used to retrieve Entities'position used when mapping
+     * font-awesome codes.
      *
      * @param ctx
-     * @return
+     * @return ArrayList of all font-awesome icons
      */
     public static ArrayList<String> getAwesomeNames(Context ctx) {
         if (mAllIconNames == null) {

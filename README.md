@@ -1,16 +1,14 @@
 # Android SimpleTagView
-Android TagView-HashTagView derived from Cüneyt Çarıkçi
+Android SimpleTagView derived from Cüneyt Çarıkçi
 
-I tried to hide internal implementation and expose tagView APIs only,
-not forcing the user to pass thru a container RelativeLayout view. SimpleTagView
-is simpler, since it uses <merge> layout, but also supports font-awesome to put an icon on your TAGs.
+This lib includes two customViews: **SimpleTagView** to show wrapped TextViews in the
+form of tags with icon and delete capability; **SimpleTagRelativeLayout** to dynamically add and remove
+tags within a custom RelativeLayout.
 
-
-
-
-Simple android view to display collection of colorful tags efficiently.
-You can edit the tag's color and deletability, and set listener for selecting or deleting tag. 
-Example usages can be found in example project.
+Lib was forked from Cüneyt ViewTag, but I tried to expose also single-tagView API,
+not forcing the user to pass thru a *containing* RelativeLayout view. SimpleTagView
+is simpler, since it uses <merge> layout, but also supports **font-awesome** to put an icon on your TAGs.
+You can edit the tag's color and set listener for selecting or deleting. 
 
 
 #Feature
@@ -21,17 +19,17 @@ Example usages can be found in example project.
 * Can be created from XML file or Java code.
 
 # Usage
-You'll need to add gradle dependency as usual, linking to jcenter when .aar will be requested
-If you really want to, you can use bintray's maven repo:
+You'll need to add gradle dependency from *jcenter()* as usualadding the following
+to your *build.gradle* 
+
 <pre>
-    maven {
-            url  "http://dl.bintray.com/shineangelic/maven" 
-        }
+   compile 'it.angelic:tagView:1.2.0'
 </pre>
 
 ## Usage in XML
 After having declared the namespace, with something like  <pre>xmlns:tagview="http://schemas.android.com/apk/res-auto"</pre>
 you may declare a Tag group like this:
+
  <pre style='color:#000000;background:#ffffff;'><span style='color:#a65700; '>&lt;</span><span style='color:#5f5035; '>it.angelic.tagviewlib.SimpleTagRelativeLayout</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>id</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>@+id/tag_group</span><span style='color:#800000; '>"</span>
             <span style='color:#007997; '>android</span><span style='color:#800080; '>:</span><span style='color:#274796; '>layout_width</span><span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>match_parent</span><span style='color:#800000; '>"</span>
@@ -54,7 +52,6 @@ or a single tag like this:
 You can add one tag inside SimpleTagRelativeLayout:
 <pre>
  SimpleTagRelativeLayout tagGroup = (SimpleTagRelativeLayout) findviewById(R.id.tag_view);
- 
  tagGroup.addTag(SimpleTagView tag);
  //You can add multiple tag via ArrayList
  tagGroup.addTags(ArrayList<Tag> tags);
@@ -78,6 +75,7 @@ You can add one tag inside SimpleTagRelativeLayout:
  <pre>
  SimpleTagView tagTer2 = new SimpleTagView(getApplicationContext());
  tagTer2.setText("Programmatic Deletable");
+ //Set font-awesome icon to be used
  tagTer2.setFontAwesome("fa-warning");
  tagTer2.setDeletable(true);
 </pre>

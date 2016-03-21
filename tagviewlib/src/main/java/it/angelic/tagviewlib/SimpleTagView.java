@@ -96,7 +96,7 @@ public class SimpleTagView extends LinearLayout {
             tagAwesomeText.setTextSize(TypedValue.COMPLEX_UNIT_PX,textSize);
         }
         try {
-            tagAwesomeText.setTypeface(SimpleTagViewUtils.getTypeface(context, Constants.FONT));
+            tagAwesomeText.setTypeface(SimpleTagViewUtils.getAwesomeTypeface(context));
             setFontAwesome(tagAwesome);
         } catch (FontNotFoundException nf) {
             Log.e("SimpleTagView", "FONT-AWESOME not found in asset folder");
@@ -130,7 +130,7 @@ public class SimpleTagView extends LinearLayout {
         //compute text color
         int computed;
         if (Color.alpha(content.getColor()) > 50){
-        if (SimpleTagViewUtils.getColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
+        if (SimpleTagViewUtils.getWeigthedColorLuminosity(content.getColor()) > Constants.TAG_TEXT_WHITE_THOLD) {
             //Log.d("SimpleTagView", "BRIG selected for: " + content.getName() + " -" + Integer.toHexString(content.getColor()) + " -" + Integer.toHexString(textDefaultColor));
             //testo scuro
             computed = Color.argb(Constants.TAG_TEXT_ALPHA, Color.red(textDefaultColor), Color.green(textDefaultColor), Color.blue(textDefaultColor));
