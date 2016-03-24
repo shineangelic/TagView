@@ -4,23 +4,27 @@ import android.content.Context;
 
 
 import android.test.AndroidTestCase;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
+import java.util.ArrayList;
 
+import it.angelic.tagviewlib.OnSimpleTagDeleteListener;
+import it.angelic.tagviewlib.SimpleTagRelativeLayout;
+import it.angelic.tagviewlib.SimpleTagView;
 import it.angelic.tagviewlib.SimpleTagViewUtils;
 
 
 public class AwesomeTest extends AndroidTestCase {
 
 
-    private Context mActivity;
-
-
     @Override
     public void setUp() throws Exception {
         super.setUp();
 
-        mActivity = getContext();
     }
 
 
@@ -31,9 +35,10 @@ public class AwesomeTest extends AndroidTestCase {
 
     public void testAwesomeCodesValidator() {
 
-        assertNotNull(mActivity.getResources());
-        assertTrue(SimpleTagViewUtils.getAwesomeCodes(mActivity).size() ==
-                SimpleTagViewUtils.getAwesomeCodes(mActivity).size());
+        assertNotNull(mContext.getResources());
+        assertTrue(SimpleTagViewUtils.getAwesomeCodes(mContext).size() ==
+                SimpleTagViewUtils.getAwesomeCodes(mContext).size());
     }
+
 
 }

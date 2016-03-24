@@ -16,12 +16,12 @@ public class SimpleTagViewUtils {
     private static Typeface mFont;
 
 
-    public static int dipToPx(Context c, float dipValue) {
+    static int dipToPx(Context c, float dipValue) {
         DisplayMetrics metrics = c.getResources().getDisplayMetrics();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 
-    public static double getWeigthedColorLuminosity(int col) {
+    static double getWeigthedColorLuminosity(int col) {
         return Color.red(col) * 0.299 + Color.green(col) * 0.587 + Color.blue(col) * 0.114;
     }
 
@@ -53,7 +53,7 @@ public class SimpleTagViewUtils {
     public static ArrayList<String> getAwesomeCodes(Context ctx) {
         if (mAllIcons == null) {
             mAllIcons = new ArrayList();
-            mAllIcons = new ArrayList<String>(Arrays.asList(ctx.getResources().getStringArray(R.array.all_icons)));
+            mAllIcons = new ArrayList<>(Arrays.asList(ctx.getResources().getStringArray(R.array.all_icons)));
         }
         return mAllIcons;
     }
@@ -67,7 +67,7 @@ public class SimpleTagViewUtils {
     public static ArrayList<String> getAwesomeNames(Context ctx) {
         if (mAllIconNames == null) {
             mAllIconNames = new ArrayList();
-            mAllIconNames = new ArrayList<String>(Arrays.asList(ctx.getResources().getStringArray(R.array.all_icon_names)));
+            mAllIconNames = new ArrayList<>(Arrays.asList(ctx.getResources().getStringArray(R.array.all_icon_names)));
         }
         return mAllIconNames;
     }

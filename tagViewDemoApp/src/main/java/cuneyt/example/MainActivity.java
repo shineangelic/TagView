@@ -189,11 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 tags.add(tag);
                 Log.d("TagView TEST", "match found: " + tag);
-                /**
-                 * if you don't want show all tags. You can set a limit.
-                 if (counter == 10)
-                 break;
-                 */
             }
         }
         tagGroup.setTags(tags);

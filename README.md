@@ -1,9 +1,10 @@
 # Android SimpleTagView
 Android SimpleTagView derived from Cüneyt Çarıkçi
 
-This lib includes two customViews: **SimpleTagView** to show wrapped TextViews in the
-form of tags with icon and delete capability; **SimpleTagRelativeLayout** to dynamically add and remove
-tags within a custom RelativeLayout.
+This lib includes two customViews: 
+* **SimpleTagView** to show wrapped TextViews in the form of tags with icon and delete capability
+* **SimpleTagRelativeLayout** to dynamically add and remove tags within a custom RelativeLayout.
+* Additional static function to expose font-awesome functions
 
 Lib was forked from Cüneyt ViewTag, but I tried to expose also single-tagView API,
 not forcing the user to pass thru a *containing* RelativeLayout view. SimpleTagView

@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="example of xml added SimpleTagView:" />
+                android:text="example of xml-declared SimpleTagView:" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -76,8 +76,10 @@
                     tagview:textSize="16sp"
                     tagview:isDeletable="true"
                     tagview:tagAwesome="fa-bug"
-                    tagview:tagColor="#00b0f0"
-                    tagview:tagText="with Cross" />
+
+                    tagview:tagColor="@android:color/transparent"
+
+                    tagview:tagText="transparent" />
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag3"
                     android:layout_width="wrap_content"
@@ -86,7 +88,7 @@
                     tagview:tagAwesome="fa-hashtag"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
-                    tagview:tagText="rounder TAG" />
+                    tagview:tagText="rounder deletable" />
             </LinearLayout>
 
             <View
@@ -99,7 +101,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Font-awesome test:" />
+                android:text="Font-awesome tag test:" />
             <it.angelic.tagviewlib.SimpleTagView
                 android:layout_marginTop="6dp"
                 android:id="@+id/nuovoTagAwesome"
@@ -107,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 tagview:textSize="20sp"
-                tagview:tagColor="@android:color/transparent"
                 tagview:tagAwesome="fa-hashtag"
                 tagview:tagText="font-awesome" />
             <Spinner
@@ -116,7 +117,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
-
 
             <View
                 android:id="@+id/separator3"

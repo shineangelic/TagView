@@ -145,8 +145,16 @@ public class SimpleTagView extends LinearLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int tagWidth;
         //  Log.d("---", content.getName());
-        int tagWidth = (int) tagTextView.getPaint().measureText(content.getName());
+        if (tagTextView != null && content.getName() != null)
+         tagWidth = (int) tagTextView.getPaint().measureText(content.getName());
+        else
+        tagWidth = 0;
+
+        if (tagAwesomeText != null && content.getFontAwesomeCode() != null)
+            tagWidth += (int) tagAwesomeText.getPaint().measureText(tagAwesomeText.getText().toString());
+
         //Log.d("tagWidth", Integer.toString(getWidth()));
         super.onMeasure(tagWidth, heightMeasureSpec);
     }

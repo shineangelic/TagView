@@ -1,3 +1,7 @@
+# 1.2.2
+* better font-awesome APIs
+* some unit-testing
+
 # 1.2.1
 * unit testing, lint fixes, bugfixes
 

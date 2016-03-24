@@ -96,14 +96,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
         mWidth = getWidth();
     }
 
-    /**
-     * onSizeChanged
-     *
-     * @param w
-     * @param h
-     * @param oldw
-     * @param oldh
-     */
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -257,7 +250,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
 
     /**
      * Add a tag array, then draw them all
-     * @param tag to be added to existing one
+     * @param tags to be added to existing one
      */
     public void setTags(SimpleTagView[] tags) {
         if (tags == null) return;
@@ -279,7 +272,7 @@ public class SimpleTagRelativeLayout extends RelativeLayout {
     /**
      * remove tag
      *
-     * @param position
+     * @param position index of element to remove
      */
     public void remove(int position) {
         if (position < mTags.size()) {
