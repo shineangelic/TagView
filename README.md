@@ -4,7 +4,7 @@ Android SimpleTagView derived from Cüneyt Çarıkçi
 This lib includes two customViews: 
 * **SimpleTagView** to show wrapped TextViews in the form of tags with icon and delete capability
 * **SimpleTagRelativeLayout** to dynamically add and remove tags within a custom RelativeLayout.
-* Additional static function to expose font-awesome functions
+* Additional static function to expose **font-awesome** functions
 
 Lib was forked from Cüneyt ViewTag, but I tried to expose also single-tagView API,
 not forcing the user to pass thru a *containing* RelativeLayout view. SimpleTagView
@@ -18,6 +18,8 @@ You can edit the tag's color and set listener for selecting or deleting.
 * Listener of tag selecting and deleting.
 * Font-awesome 4.5.0 native support
 * Can be created from XML file or Java code.
+
+![demo app screenshot](https://10428.https.cdn.softlayer.net/8010428/dal05.objectstorage.softlayer.net/v1/AUTH_3c173d3a-8847-45dc-9d93-faf1d6e70fe5/screenshots/fe21ca31-54a8-4c80-ae49-7bfe6ea936c7)
 
 # Usage
 You'll need to add gradle dependency from *jcenter()* as usualadding the following
@@ -58,13 +60,13 @@ You can add one tag inside SimpleTagRelativeLayout:
  tagGroup.addTags(ArrayList<Tag> tags);
  //Via string array
  addTags(String[] tags);
- //set click listener
+ //click listener example
  tagGroup.setOnTagClickListener(new OnTagClickListener() {
             @Override
             public void onTagClick(Tag tag, int position) {
             }
  });     
- //set delete listener
+ //delete listener example
  tagGroup.setOnTagDeleteListener(new OnTagDeleteListener() {
    @Override
    public void onTagDeleted(final TagView view, final Tag tag, final int position) {
@@ -81,21 +83,11 @@ You can add one tag inside SimpleTagRelativeLayout:
  tagTer2.setDeletable(true);
 </pre>
 
-#Libraries Used
+# Libraries & Credits
 <a href="http://jakewharton.github.io/butterknife/">ButterKnife</a> by Jake Wharton
+
 <a href="http://fontawesome.io">Font Awesome</a> by Dave Gandy
 
-#License
-Copyright 2016 shine@angelic.it forking Cüneyt Çarıkçi
+Copyright 2016 shine@angelic.it forking <a href="https://github.com/Cutta/TagView">Cüneyt Çarıkçi</a>
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+ 

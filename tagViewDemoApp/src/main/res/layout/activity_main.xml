@@ -74,17 +74,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:textSize="16sp"
-                    tagview:isDeletable="true"
                     tagview:tagAwesome="fa-bug"
-
                     tagview:tagColor="@android:color/transparent"
-
                     tagview:tagText="transparent" />
+
                 <it.angelic.tagviewlib.SimpleTagView
                     android:id="@+id/nuovoTag3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tagview:textSize="12sp"
+                    tagview:isDeletable="true"
                     tagview:tagAwesome="fa-hashtag"
                     tagview:tagColor="@android:color/holo_purple"
                     tagview:tagRadius="16"
