@@ -4,14 +4,15 @@ apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/
 //facciamo cosi
 //http://blog.blundellapps.co.uk/locally-release-an-android-library-for-jcenter-or-maven-central-inclusion/
 
+//./gradlew clean build generateRelease
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 23
-        versionCode 5
+        targetSdkVersion 25
+        versionCode 6
         versionName project.PUBLISH_VERSION
     }
     buildTypes {
@@ -23,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:appcompat-v7:25.0.0'
 
 }

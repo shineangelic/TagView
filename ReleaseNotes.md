@@ -1,3 +1,6 @@
+# 1.3.0
+* Updated to Font-awesome 4.7.0
+
 # 1.2.2
 * better font-awesome APIs
 * some unit-testing
