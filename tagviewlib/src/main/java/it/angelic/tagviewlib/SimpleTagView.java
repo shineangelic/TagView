@@ -214,7 +214,9 @@ public class SimpleTagView extends LinearLayout {
                 //codes according to http://fortawesome.github.io/Font-Awesome/cheatsheet/
                 codeidx = SimpleTagViewUtils.getAwesomeNames(getContext()).indexOf(fontName);
             }
-            return SimpleTagViewUtils.getAwesomeCodes(getContext()).get(codeidx);
+            String ret = SimpleTagViewUtils.getAwesomeCodes(getContext()).get(codeidx);
+            Log.d("SimpleTagView", "code Idx found: " + ret);
+            return ret;
         } catch (FontNotFoundException | ArrayIndexOutOfBoundsException | NullPointerException fr) {
             throw new FontNotFoundException("Font with code not found: " + fontName);
         }

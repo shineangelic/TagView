@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleTagView tagTer3 = new SimpleTagView(this);
         tagTer3.setText("Programmatic Red");
-        tagTer3.setFontAwesome("fa-warning");
+        tagTer3.setFontAwesome("fa-shower");
         tagTer3.setColor(Color.argb(255, 255, 0, 0));
 
         testRel.addView(tagTer);

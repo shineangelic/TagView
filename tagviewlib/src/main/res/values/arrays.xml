@@ -3,6 +3,10 @@
     <!-- DONT MOVE ITEMS, THE TWO ARRAYS ARE BINDED -->
     <string-array name="all_icon_names">
         <item>fa-500px</item>
+        <item>fa-address-book</item>
+        <item>fa-address-book-o</item>
+        <item>fa-address-card</item>
+        <item>fa-address-card-o</item>
         <item>fa-adjust</item>
         <item>fa-adn</item>
         <item>fa-align-center</item>
@@ -11,6 +15,7 @@
         <item>fa-align-right</item>
         <item>fa-amazon</item>
         <item>fa-ambulance</item>
+        <item>fa-american-sign-language-interpreting</item>
         <item>fa-anchor</item>
         <item>fa-android</item>
         <item>fa-angellist</item>
@@ -41,17 +46,24 @@
         <item>fa-arrows-alt</item>
         <item>fa-arrows-h</item>
         <item>fa-arrows-v</item>
+        <item>fa-asl-interpreting</item>
+        <item>fa-assistive-listening-systems</item>
         <item>fa-asterisk</item>
         <item>fa-at</item>
+        <item>fa-audio-description</item>
         <item>fa-automobile</item>
         <item>fa-backward</item>
         <item>fa-balance-scale</item>
         <item>fa-ban</item>
+        <item>fa-bandcamp</item>
         <item>fa-bank</item>
         <item>fa-bar-chart</item>
         <item>fa-bar-chart-o</item>
         <item>fa-barcode</item>
         <item>fa-bars</item>
+        <item>fa-bath</item>
+        <item>fa-bathtub</item>
+        <item>fa-battery</item>
         <item>fa-battery-0</item>
         <item>fa-battery-1</item>
         <item>fa-battery-2</item>
@@ -77,6 +89,7 @@
         <item>fa-bitbucket-square</item>
         <item>fa-bitcoin</item>
         <item>fa-black-tie</item>
+        <item>fa-blind</item>
         <item>fa-bluetooth</item>
         <item>fa-bluetooth-b</item>
         <item>fa-bold</item>
@@ -85,6 +98,7 @@
         <item>fa-book</item>
         <item>fa-bookmark</item>
         <item>fa-bookmark-o</item>
+        <item>fa-braille</item>
         <item>fa-briefcase</item>
         <item>fa-btc</item>
         <item>fa-bug</item>
@@ -187,6 +201,8 @@
         <item>fa-dashboard</item>
         <item>fa-dashcube</item>
         <item>fa-database</item>
+        <item>fa-deaf</item>
+        <item>fa-deafness</item>
         <item>fa-dedent</item>
         <item>fa-delicious</item>
         <item>fa-desktop</item>
@@ -197,18 +213,25 @@
         <item>fa-dot-circle-o</item>
         <item>fa-download</item>
         <item>fa-dribbble</item>
+        <item>fa-drivers-license</item>
+        <item>fa-drivers-license-o</item>
         <item>fa-dropbox</item>
         <item>fa-drupal</item>
         <item>fa-edge</item>
         <item>fa-edit</item>
+        <item>fa-eercast</item>
         <item>fa-eject</item>
         <item>fa-ellipsis-h</item>
         <item>fa-ellipsis-v</item>
         <item>fa-empire</item>
         <item>fa-envelope</item>
         <item>fa-envelope-o</item>
+        <item>fa-envelope-open</item>
+        <item>fa-envelope-open-o</item>
         <item>fa-envelope-square</item>
+        <item>fa-envira</item>
         <item>fa-eraser</item>
+        <item>fa-etsy</item>
         <item>fa-eur</item>
         <item>fa-euro</item>
         <item>fa-exchange</item>
@@ -222,6 +245,7 @@
         <item>fa-eye</item>
         <item>fa-eye-slash</item>
         <item>fa-eyedropper</item>
+        <item>fa-fa</item>
         <item>fa-facebook</item>
         <item>fa-facebook-f</item>
         <item>fa-facebook-official</item>
@@ -256,6 +280,7 @@
         <item>fa-fire</item>
         <item>fa-fire-extinguisher</item>
         <item>fa-firefox</item>
+        <item>fa-first-order</item>
         <item>fa-flag</item>
         <item>fa-flag-checkered</item>
         <item>fa-flag-o</item>
@@ -268,11 +293,13 @@
         <item>fa-folder-open</item>
         <item>fa-folder-open-o</item>
         <item>fa-font</item>
+        <item>fa-font-awesome</item>
         <item>fa-fonticons</item>
         <item>fa-fort-awesome</item>
         <item>fa-forumbee</item>
         <item>fa-forward</item>
         <item>fa-foursquare</item>
+        <item>fa-free-code-camp</item>
         <item>fa-frown-o</item>
         <item>fa-futbol-o</item>
         <item>fa-gamepad</item>
@@ -291,15 +318,21 @@
         <item>fa-github</item>
         <item>fa-github-alt</item>
         <item>fa-github-square</item>
+        <item>fa-gitlab</item>
         <item>fa-gittip</item>
         <item>fa-glass</item>
+        <item>fa-glide</item>
+        <item>fa-glide-g</item>
         <item>fa-globe</item>
         <item>fa-google</item>
         <item>fa-google-plus</item>
+        <item>fa-google-plus-circle</item>
+        <item>fa-google-plus-official</item>
         <item>fa-google-plus-square</item>
         <item>fa-google-wallet</item>
         <item>fa-graduation-cap</item>
         <item>fa-gratipay</item>
+        <item>fa-grav</item>
         <item>fa-group</item>
         <item>fa-h-square</item>
         <item>fa-hacker-news</item>
@@ -316,6 +349,8 @@
         <item>fa-hand-scissors-o</item>
         <item>fa-hand-spock-o</item>
         <item>fa-hand-stop-o</item>
+        <item>fa-handshake-o</item>
+        <item>fa-hard-of-hearing</item>
         <item>fa-hashtag</item>
         <item>fa-hdd-o</item>
         <item>fa-header</item>
@@ -338,8 +373,12 @@
         <item>fa-houzz</item>
         <item>fa-html5</item>
         <item>fa-i-cursor</item>
+        <item>fa-id-badge</item>
+        <item>fa-id-card</item>
+        <item>fa-id-card-o</item>
         <item>fa-ils</item>
         <item>fa-image</item>
+        <item>fa-imdb</item>
         <item>fa-inbox</item>
         <item>fa-indent</item>
         <item>fa-industry</item>
@@ -377,6 +416,7 @@
         <item>fa-link</item>
         <item>fa-linkedin</item>
         <item>fa-linkedin-square</item>
+        <item>fa-linode</item>
         <item>fa-linux</item>
         <item>fa-list</item>
         <item>fa-list-alt</item>
@@ -388,6 +428,7 @@
         <item>fa-long-arrow-left</item>
         <item>fa-long-arrow-right</item>
         <item>fa-long-arrow-up</item>
+        <item>fa-low-vision</item>
         <item>fa-magic</item>
         <item>fa-magnet</item>
         <item>fa-mail-forward</item>
@@ -408,8 +449,10 @@
         <item>fa-meanpath</item>
         <item>fa-medium</item>
         <item>fa-medkit</item>
+        <item>fa-meetup</item>
         <item>fa-meh-o</item>
         <item>fa-mercury</item>
+        <item>fa-microchip</item>
         <item>fa-microphone</item>
         <item>fa-microphone-slash</item>
         <item>fa-minus</item>
@@ -461,6 +504,7 @@
         <item>fa-pie-chart</item>
         <item>fa-pied-piper</item>
         <item>fa-pied-piper-alt</item>
+        <item>fa-pied-piper-pp</item>
         <item>fa-pinterest</item>
         <item>fa-pinterest-p</item>
         <item>fa-pinterest-square</item>
@@ -473,6 +517,7 @@
         <item>fa-plus-circle</item>
         <item>fa-plus-square</item>
         <item>fa-plus-square-o</item>
+        <item>fa-podcast</item>
         <item>fa-power-off</item>
         <item>fa-print</item>
         <item>fa-product-hunt</item>
@@ -481,10 +526,13 @@
         <item>fa-qrcode</item>
         <item>fa-question</item>
         <item>fa-question-circle</item>
+        <item>fa-question-circle-o</item>
+        <item>fa-quora</item>
         <item>fa-quote-left</item>
         <item>fa-quote-right</item>
         <item>fa-ra</item>
         <item>fa-random</item>
+        <item>fa-ravelry</item>
         <item>fa-rebel</item>
         <item>fa-recycle</item>
         <item>fa-reddit</item>
@@ -498,6 +546,7 @@
         <item>fa-repeat</item>
         <item>fa-reply</item>
         <item>fa-reply-all</item>
+        <item>fa-resistance</item>
         <item>fa-retweet</item>
         <item>fa-rmb</item>
         <item>fa-road</item>
@@ -510,6 +559,7 @@
         <item>fa-rub</item>
         <item>fa-ruble</item>
         <item>fa-rupee</item>
+        <item>fa-s15</item>
         <item>fa-safari</item>
         <item>fa-save</item>
         <item>fa-scissors</item>
@@ -534,9 +584,12 @@
         <item>fa-shopping-bag</item>
         <item>fa-shopping-basket</item>
         <item>fa-shopping-cart</item>
+        <item>fa-shower</item>
         <item>fa-sign-in</item>
+        <item>fa-sign-language</item>
         <item>fa-sign-out</item>
         <item>fa-signal</item>
+        <item>fa-signing</item>
         <item>fa-simplybuilt</item>
         <item>fa-sitemap</item>
         <item>fa-skyatlas</item>
@@ -545,6 +598,10 @@
         <item>fa-sliders</item>
         <item>fa-slideshare</item>
         <item>fa-smile-o</item>
+        <item>fa-snapchat</item>
+        <item>fa-snapchat-ghost</item>
+        <item>fa-snapchat-square</item>
+        <item>fa-snowflake-o</item>
         <item>fa-soccer-ball-o</item>
         <item>fa-sort</item>
         <item>fa-sort-alpha-asc</item>
@@ -590,6 +647,7 @@
         <item>fa-subway</item>
         <item>fa-suitcase</item>
         <item>fa-sun-o</item>
+        <item>fa-superpowers</item>
         <item>fa-superscript</item>
         <item>fa-support</item>
         <item>fa-table</item>
@@ -599,6 +657,7 @@
         <item>fa-tags</item>
         <item>fa-tasks</item>
         <item>fa-taxi</item>
+        <item>fa-telegram</item>
         <item>fa-television</item>
         <item>fa-tencent-weibo</item>
         <item>fa-terminal</item>
@@ -607,6 +666,18 @@
         <item>fa-th</item>
         <item>fa-th-large</item>
         <item>fa-th-list</item>
+        <item>fa-themeisle</item>
+        <item>fa-thermometer</item>
+        <item>fa-thermometer-0</item>
+        <item>fa-thermometer-1</item>
+        <item>fa-thermometer-2</item>
+        <item>fa-thermometer-3</item>
+        <item>fa-thermometer-4</item>
+        <item>fa-thermometer-empty</item>
+        <item>fa-thermometer-full</item>
+        <item>fa-thermometer-half</item>
+        <item>fa-thermometer-quarter</item>
+        <item>fa-thermometer-three-quarters</item>
         <item>fa-thumb-tack</item>
         <item>fa-thumbs-down</item>
         <item>fa-thumbs-o-down</item>
@@ -616,6 +687,8 @@
         <item>fa-times</item>
         <item>fa-times-circle</item>
         <item>fa-times-circle-o</item>
+        <item>fa-times-rectangle</item>
+        <item>fa-times-rectangle-o</item>
         <item>fa-tint</item>
         <item>fa-toggle-down</item>
         <item>fa-toggle-left</item>
@@ -646,6 +719,7 @@
         <item>fa-umbrella</item>
         <item>fa-underline</item>
         <item>fa-undo</item>
+        <item>fa-universal-access</item>
         <item>fa-university</item>
         <item>fa-unlink</item>
         <item>fa-unlock</item>
@@ -655,20 +729,28 @@
         <item>fa-usb</item>
         <item>fa-usd</item>
         <item>fa-user</item>
+        <item>fa-user-circle</item>
+        <item>fa-user-circle-o</item>
         <item>fa-user-md</item>
+        <item>fa-user-o</item>
         <item>fa-user-plus</item>
         <item>fa-user-secret</item>
         <item>fa-user-times</item>
         <item>fa-users</item>
+        <item>fa-vcard</item>
+        <item>fa-vcard-o</item>
         <item>fa-venus</item>
         <item>fa-venus-double</item>
         <item>fa-venus-mars</item>
         <item>fa-viacoin</item>
+        <item>fa-viadeo</item>
+        <item>fa-viadeo-square</item>
         <item>fa-video-camera</item>
         <item>fa-vimeo</item>
         <item>fa-vimeo-square</item>
         <item>fa-vine</item>
         <item>fa-vk</item>
+        <item>fa-volume-control-phone</item>
         <item>fa-volume-down</item>
         <item>fa-volume-off</item>
         <item>fa-volume-up</item>
@@ -678,11 +760,20 @@
         <item>fa-weixin</item>
         <item>fa-whatsapp</item>
         <item>fa-wheelchair</item>
+        <item>fa-wheelchair-alt</item>
         <item>fa-wifi</item>
         <item>fa-wikipedia-w</item>
+        <item>fa-window-close</item>
+        <item>fa-window-close-o</item>
+        <item>fa-window-maximize</item>
+        <item>fa-window-minimize</item>
+        <item>fa-window-restore</item>
         <item>fa-windows</item>
         <item>fa-won</item>
         <item>fa-wordpress</item>
+        <item>fa-wpbeginner</item>
+        <item>fa-wpexplorer</item>
+        <item>fa-wpforms</item>
         <item>fa-wrench</item>
         <item>fa-xing</item>
         <item>fa-xing-square</item>
@@ -693,12 +784,16 @@
         <item>fa-yc-square</item>
         <item>fa-yelp</item>
         <item>fa-yen</item>
+        <item>fa-yoast</item>
         <item>fa-youtube</item>
         <item>fa-youtube-play</item>
-        <item>fa-youtube-square</item>
     </string-array>
     <string-array name="all_icons">
         <item>&#xf26e;</item>
+        <item>&#xf2b9;</item>
+        <item>&#xf2ba;</item>
+        <item>&#xf2bb;</item>
+        <item>&#xf2bc;</item>
         <item>&#xf042;</item>
         <item>&#xf170;</item>
         <item>&#xf037;</item>
@@ -707,6 +802,7 @@
         <item>&#xf038;</item>
         <item>&#xf270;</item>
         <item>&#xf0f9;</item>
+        <item>&#xf2a3;</item>
         <item>&#xf13d;</item>
         <item>&#xf17b;</item>
         <item>&#xf209;</item>
@@ -737,17 +833,24 @@
         <item>&#xf0b2;</item>
         <item>&#xf07e;</item>
         <item>&#xf07d;</item>
+        <item>&#xf2a3;</item>
+        <item>&#xf2a2;</item>
         <item>&#xf069;</item>
         <item>&#xf1fa;</item>
+        <item>&#xf29e;</item>
         <item>&#xf1b9;</item>
         <item>&#xf04a;</item>
         <item>&#xf24e;</item>
         <item>&#xf05e;</item>
+        <item>&#xf2d5;</item>
         <item>&#xf19c;</item>
         <item>&#xf080;</item>
         <item>&#xf080;</item>
         <item>&#xf02a;</item>
         <item>&#xf0c9;</item>
+        <item>&#xf2cd;</item>
+        <item>&#xf2cd;</item>
+        <item>&#xf240;</item>
         <item>&#xf244;</item>
         <item>&#xf243;</item>
         <item>&#xf242;</item>
@@ -773,6 +876,7 @@
         <item>&#xf172;</item>
         <item>&#xf15a;</item>
         <item>&#xf27e;</item>
+        <item>&#xf29d;</item>
         <item>&#xf293;</item>
         <item>&#xf294;</item>
         <item>&#xf032;</item>
@@ -781,6 +885,7 @@
         <item>&#xf02d;</item>
         <item>&#xf02e;</item>
         <item>&#xf097;</item>
+        <item>&#xf2a1;</item>
         <item>&#xf0b1;</item>
         <item>&#xf15a;</item>
         <item>&#xf188;</item>
@@ -883,6 +988,8 @@
         <item>&#xf0e4;</item>
         <item>&#xf210;</item>
         <item>&#xf1c0;</item>
+        <item>&#xf2a4;</item>
+        <item>&#xf2a4;</item>
         <item>&#xf03b;</item>
         <item>&#xf1a5;</item>
         <item>&#xf108;</item>
@@ -893,18 +1000,25 @@
         <item>&#xf192;</item>
         <item>&#xf019;</item>
         <item>&#xf17d;</item>
+        <item>&#xf2c2;</item>
+        <item>&#xf2c3;</item>
         <item>&#xf16b;</item>
         <item>&#xf1a9;</item>
         <item>&#xf282;</item>
         <item>&#xf044;</item>
+        <item>&#xf2da;</item>
         <item>&#xf052;</item>
         <item>&#xf141;</item>
         <item>&#xf142;</item>
         <item>&#xf1d1;</item>
         <item>&#xf0e0;</item>
         <item>&#xf003;</item>
+        <item>&#xf2b6;</item>
+        <item>&#xf2b7;</item>
         <item>&#xf199;</item>
+        <item>&#xf299;</item>
         <item>&#xf12d;</item>
+        <item>&#xf2d7;</item>
         <item>&#xf153;</item>
         <item>&#xf153;</item>
         <item>&#xf0ec;</item>
@@ -918,6 +1032,7 @@
         <item>&#xf06e;</item>
         <item>&#xf070;</item>
         <item>&#xf1fb;</item>
+        <item>&#xf2b4;</item>
         <item>&#xf09a;</item>
         <item>&#xf09a;</item>
         <item>&#xf230;</item>
@@ -952,6 +1067,7 @@
         <item>&#xf06d;</item>
         <item>&#xf134;</item>
         <item>&#xf269;</item>
+        <item>&#xf2b0;</item>
         <item>&#xf024;</item>
         <item>&#xf11e;</item>
         <item>&#xf11d;</item>
@@ -964,11 +1080,13 @@
         <item>&#xf07c;</item>
         <item>&#xf115;</item>
         <item>&#xf031;</item>
+        <item>&#xf2b4;</item>
         <item>&#xf280;</item>
         <item>&#xf286;</item>
         <item>&#xf211;</item>
         <item>&#xf04e;</item>
         <item>&#xf180;</item>
+        <item>&#xf2c5;</item>
         <item>&#xf119;</item>
         <item>&#xf1e3;</item>
         <item>&#xf11b;</item>
@@ -987,15 +1105,21 @@
         <item>&#xf09b;</item>
         <item>&#xf113;</item>
         <item>&#xf092;</item>
+        <item>&#xf296;</item>
         <item>&#xf184;</item>
         <item>&#xf000;</item>
+        <item>&#xf2a5;</item>
+        <item>&#xf2a6;</item>
         <item>&#xf0ac;</item>
         <item>&#xf1a0;</item>
         <item>&#xf0d5;</item>
+        <item>&#xf2b3;</item>
+        <item>&#xf2b3;</item>
         <item>&#xf0d4;</item>
         <item>&#xf1ee;</item>
         <item>&#xf19d;</item>
         <item>&#xf184;</item>
+        <item>&#xf2d6;</item>
         <item>&#xf0c0;</item>
         <item>&#xf0fd;</item>
         <item>&#xf1d4;</item>
@@ -1012,6 +1136,8 @@
         <item>&#xf257;</item>
         <item>&#xf259;</item>
         <item>&#xf256;</item>
+        <item>&#xf2b5;</item>
+        <item>&#xf2a4;</item>
         <item>&#xf292;</item>
         <item>&#xf0a0;</item>
         <item>&#xf1dc;</item>
@@ -1034,8 +1160,12 @@
         <item>&#xf27c;</item>
         <item>&#xf13b;</item>
         <item>&#xf246;</item>
+        <item>&#xf2c1;</item>
+        <item>&#xf2c2;</item>
+        <item>&#xf2c3;</item>
         <item>&#xf20b;</item>
         <item>&#xf03e;</item>
+        <item>&#xf2d8;</item>
         <item>&#xf01c;</item>
         <item>&#xf03c;</item>
         <item>&#xf275;</item>
@@ -1073,6 +1203,7 @@
         <item>&#xf0c1;</item>
         <item>&#xf0e1;</item>
         <item>&#xf08c;</item>
+        <item>&#xf2b8;</item>
         <item>&#xf17c;</item>
         <item>&#xf03a;</item>
         <item>&#xf022;</item>
@@ -1084,6 +1215,7 @@
         <item>&#xf177;</item>
         <item>&#xf178;</item>
         <item>&#xf176;</item>
+        <item>&#xf2a8;</item>
         <item>&#xf0d0;</item>
         <item>&#xf076;</item>
         <item>&#xf064;</item>
@@ -1104,8 +1236,10 @@
         <item>&#xf20c;</item>
         <item>&#xf23a;</item>
         <item>&#xf0fa;</item>
+        <item>&#xf2e0;</item>
         <item>&#xf11a;</item>
         <item>&#xf223;</item>
+        <item>&#xf2db;</item>
         <item>&#xf130;</item>
         <item>&#xf131;</item>
         <item>&#xf068;</item>
@@ -1155,8 +1289,9 @@
         <item>&#xf03e;</item>
         <item>&#xf03e;</item>
         <item>&#xf200;</item>
-        <item>&#xf1a7;</item>
+        <item>&#xf2ae;</item>
         <item>&#xf1a8;</item>
+        <item>&#xf1a7;</item>
         <item>&#xf0d2;</item>
         <item>&#xf231;</item>
         <item>&#xf0d3;</item>
@@ -1169,6 +1304,7 @@
         <item>&#xf055;</item>
         <item>&#xf0fe;</item>
         <item>&#xf196;</item>
+        <item>&#xf2ce;</item>
         <item>&#xf011;</item>
         <item>&#xf02f;</item>
         <item>&#xf288;</item>
@@ -1177,10 +1313,13 @@
         <item>&#xf029;</item>
         <item>&#xf128;</item>
         <item>&#xf059;</item>
+        <item>&#xf29c;</item>
+        <item>&#xf2c4;</item>
         <item>&#xf10d;</item>
         <item>&#xf10e;</item>
         <item>&#xf1d0;</item>
         <item>&#xf074;</item>
+        <item>&#xf2d9;</item>
         <item>&#xf1d0;</item>
         <item>&#xf1b8;</item>
         <item>&#xf1a1;</item>
@@ -1194,6 +1333,7 @@
         <item>&#xf01e;</item>
         <item>&#xf112;</item>
         <item>&#xf122;</item>
+        <item>&#xf1d0;</item>
         <item>&#xf079;</item>
         <item>&#xf157;</item>
         <item>&#xf018;</item>
@@ -1206,6 +1346,7 @@
         <item>&#xf158;</item>
         <item>&#xf158;</item>
         <item>&#xf156;</item>
+        <item>&#xf2cd;</item>
         <item>&#xf267;</item>
         <item>&#xf0c7;</item>
         <item>&#xf0c4;</item>
@@ -1230,9 +1371,12 @@
         <item>&#xf290;</item>
         <item>&#xf291;</item>
         <item>&#xf07a;</item>
+        <item>&#xf2cc;</item>
         <item>&#xf090;</item>
+        <item>&#xf2a7;</item>
         <item>&#xf08b;</item>
         <item>&#xf012;</item>
+        <item>&#xf2a7;</item>
         <item>&#xf215;</item>
         <item>&#xf0e8;</item>
         <item>&#xf216;</item>
@@ -1241,6 +1385,10 @@
         <item>&#xf1de;</item>
         <item>&#xf1e7;</item>
         <item>&#xf118;</item>
+        <item>&#xf2ab;</item>
+        <item>&#xf2ac;</item>
+        <item>&#xf2ad;</item>
+        <item>&#xf2dc;</item>
         <item>&#xf1e3;</item>
         <item>&#xf0dc;</item>
         <item>&#xf15d;</item>
@@ -1286,6 +1434,7 @@
         <item>&#xf239;</item>
         <item>&#xf0f2;</item>
         <item>&#xf185;</item>
+        <item>&#xf2dd;</item>
         <item>&#xf12b;</item>
         <item>&#xf1cd;</item>
         <item>&#xf0ce;</item>
@@ -1295,6 +1444,7 @@
         <item>&#xf02c;</item>
         <item>&#xf0ae;</item>
         <item>&#xf1ba;</item>
+        <item>&#xf2c6;</item>
         <item>&#xf26c;</item>
         <item>&#xf1d5;</item>
         <item>&#xf120;</item>
@@ -1303,6 +1453,18 @@
         <item>&#xf00a;</item>
         <item>&#xf009;</item>
         <item>&#xf00b;</item>
+        <item>&#xf2b2;</item>
+        <item>&#xf2c7;</item>
+        <item>&#xf2cb;</item>
+        <item>&#xf2ca;</item>
+        <item>&#xf2c9;</item>
+        <item>&#xf2c8;</item>
+        <item>&#xf2c7;</item>
+        <item>&#xf2cb;</item>
+        <item>&#xf2c7;</item>
+        <item>&#xf2c9;</item>
+        <item>&#xf2ca;</item>
+        <item>&#xf2c8;</item>
         <item>&#xf08d;</item>
         <item>&#xf165;</item>
         <item>&#xf088;</item>
@@ -1312,6 +1474,8 @@
         <item>&#xf00d;</item>
         <item>&#xf057;</item>
         <item>&#xf05c;</item>
+        <item>&#xf2d3;</item>
+        <item>&#xf2d4;</item>
         <item>&#xf043;</item>
         <item>&#xf150;</item>
         <item>&#xf191;</item>
@@ -1342,6 +1506,7 @@
         <item>&#xf0e9;</item>
         <item>&#xf0cd;</item>
         <item>&#xf0e2;</item>
+        <item>&#xf29a;</item>
         <item>&#xf19c;</item>
         <item>&#xf127;</item>
         <item>&#xf09c;</item>
@@ -1351,20 +1516,28 @@
         <item>&#xf287;</item>
         <item>&#xf155;</item>
         <item>&#xf007;</item>
+        <item>&#xf2bd;</item>
+        <item>&#xf2be;</item>
         <item>&#xf0f0;</item>
+        <item>&#xf2c0;</item>
         <item>&#xf234;</item>
         <item>&#xf21b;</item>
         <item>&#xf235;</item>
         <item>&#xf0c0;</item>
+        <item>&#xf2bb;</item>
+        <item>&#xf2bc;</item>
         <item>&#xf221;</item>
         <item>&#xf226;</item>
         <item>&#xf228;</item>
         <item>&#xf237;</item>
+        <item>&#xf2a9;</item>
+        <item>&#xf2aa;</item>
         <item>&#xf03d;</item>
         <item>&#xf27d;</item>
         <item>&#xf194;</item>
         <item>&#xf1ca;</item>
         <item>&#xf189;</item>
+        <item>&#xf2a0;</item>
         <item>&#xf027;</item>
         <item>&#xf026;</item>
         <item>&#xf028;</item>
@@ -1374,11 +1547,20 @@
         <item>&#xf1d7;</item>
         <item>&#xf232;</item>
         <item>&#xf193;</item>
+        <item>&#xf29b;</item>
         <item>&#xf1eb;</item>
         <item>&#xf266;</item>
+        <item>&#xf2d3;</item>
+        <item>&#xf2d4;</item>
+        <item>&#xf2d0;</item>
+        <item>&#xf2d1;</item>
+        <item>&#xf2d2;</item>
         <item>&#xf17a;</item>
         <item>&#xf159;</item>
         <item>&#xf19a;</item>
+        <item>&#xf297;</item>
+        <item>&#xf2de;</item>
+        <item>&#xf298;</item>
         <item>&#xf0ad;</item>
         <item>&#xf168;</item>
         <item>&#xf169;</item>
@@ -1389,8 +1571,8 @@
         <item>&#xf1d4;</item>
         <item>&#xf1e9;</item>
         <item>&#xf157;</item>
+        <item>&#xf2b1;</item>
         <item>&#xf167;</item>
         <item>&#xf16a;</item>
-        <item>&#xf166;</item>
     </string-array>
 </resources>
