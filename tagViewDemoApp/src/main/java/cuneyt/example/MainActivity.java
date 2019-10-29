@@ -2,7 +2,6 @@ package cuneyt.example;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -12,6 +11,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,13 +33,13 @@ import it.angelic.tagviewlib.SimpleTagViewUtils;
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.tag_group)
-     SimpleTagRelativeLayout tagGroup;
+    SimpleTagRelativeLayout tagGroup;
 
     @Bind(R.id.editText)
-     EditText editText;
+    EditText editText;
 
     @Bind(R.id.test_laoyut)
-     LinearLayout testRel;
+    LinearLayout testRel;
 
     @Bind(R.id.nuovoTag)
     SimpleTagView testRaff;

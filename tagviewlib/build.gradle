@@ -6,12 +6,12 @@ apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/
 
 //./gradlew clean build generateRelease
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 28
         versionCode 6
         versionName project.PUBLISH_VERSION
     }
@@ -24,6 +24,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 
 }
