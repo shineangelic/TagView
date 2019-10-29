@@ -3,6 +3,7 @@ apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/
 
 //facciamo cosi
 //http://blog.blundellapps.co.uk/locally-release-an-android-library-for-jcenter-or-maven-central-inclusion/
+//https://bintray.com/shineangelic#
 
 //./gradlew clean build generateRelease
 android {

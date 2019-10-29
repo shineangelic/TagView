@@ -1,3 +1,6 @@
+# 1.4.0
+* Updated to Android 9
+
 # 1.3.0
 * Updated to Font-awesome 4.7.0
 

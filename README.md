@@ -16,7 +16,7 @@ You can edit the tag's color and set listener for selecting or deleting.
 * SimpleTagView extends GroupView, it represents a single TAG. Can be deletable or not
 * SimpleTagRelativeLayout is a group of TAGs, allowing add, removal and listeners.
 * Listener of tag selecting and deleting.
-* Font-awesome 4.5.0 native support
+* Font-awesome 4.7.0 native support
 * Can be created from XML file or Java code.
 
 ![demo app screenshot](https://10428.https.cdn.softlayer.net/8010428/dal05.objectstorage.softlayer.net/v1/AUTH_3c173d3a-8847-45dc-9d93-faf1d6e70fe5/screenshots/fe21ca31-54a8-4c80-ae49-7bfe6ea936c7)
@@ -26,7 +26,7 @@ You'll need to add gradle dependency from *jcenter()* as usualadding the followi
 to your *build.gradle* 
 
 <pre>
-   compile 'it.angelic:tagView:1.2.0'
+   compile 'it.angelic:tagView:1.4.0'
 </pre>
 
 ## Usage in XML
