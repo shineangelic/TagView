@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 28
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 28
         versionCode 5
         versionName project.PUBLISH_VERSION
 
@@ -22,8 +22,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:25.1.0'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile project(':tagviewlib')
+    implementation 'androidx.annotation:annotation:1.0.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    annotationProcessor 'com.jakewharton:butterknife:7.0.1'
+    implementation project(':tagviewlib')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }

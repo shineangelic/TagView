@@ -2,7 +2,6 @@ package cuneyt.example;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -19,6 +18,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cuneyt.example.model.TagClass;
