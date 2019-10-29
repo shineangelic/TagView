@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
+import androidx.appcompat.app.AppCompatActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cuneyt.example.model.TagClass;
